@@ -1,0 +1,5 @@
+export { default as HotNewsHero } from "./HotNewsHero"
+export { default as NewsCard } from "./NewsCard"
+export { default as NewsDetail } from "./NewsDetail"
+export { default as NewsListCard } from "./NewsListCard"
+export { default as RegisterFollowNews } from "./RegisterFollowNews"

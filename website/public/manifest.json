@@ -1,0 +1,17 @@
+{
+  "name": "Bệnh viện Quân Y 175",
+  "short_name": "Bệnh viện Quân Y 175",
+  "description": "Bệnh viện Quân Y 175 trực thuộc Bộ Quốc phòng Việt Nam là bệnh viện tuyến cuối của quân đội ở khu vực phía nam, có nhiệm vụ khám chữa bệnh cho cán bộ cấp cao trong quân đội, cán bộ cấp cao Đảng - Nhà nước, và các đối tượng khác.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/assets/logo/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ]
+}

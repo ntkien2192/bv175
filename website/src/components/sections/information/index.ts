@@ -1,0 +1,8 @@
+export { default as InfoBasic } from "./InfoBasic"
+export { default as InfoBasicR } from "./InfoBasicR"
+export { default as InfoCenterBlock } from "./InfoCenterBlock"
+export { default as InfoWithLeftImage } from "./InfoWithLeftImage"
+export { default as InfoWithLeftImageTopTitle } from "./InfoWithLeftImageTopTitle"
+export { default as InfoWithRightImageTopTitle } from "./InfoWithRightImageTopTitle"
+export { default as InfoWithRightImage } from "./InfoWithRightImage"
+export { default as InfoWithFeaturesImage } from "./InfoWithFeaturesImage"

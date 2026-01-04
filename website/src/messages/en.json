@@ -1,0 +1,159 @@
+{
+  "Metadata": {
+    "doctor": {
+      "title": "Doctor {name} | Military hospital 175"
+    },
+    "department": {
+      "title": "{name} ({code}) | Military hospital 175"
+    },
+    "unit": {
+      "title": "{name} | Military hospital 175"
+    }
+  },
+  "Common": {
+    "return-home": "Back to home page",
+    "close": "Close",
+    "submit": "Submit",
+    "view-more": "View more",
+    "view-detail": "View details",
+    "no-data": "No data available!",
+    "empty-page": "This page does not exist!",
+    "return-main-menu": "Back to main menu",
+    "expand": "Expand",
+    "collapse": "Collapse",
+    "all": "All",
+    "search-results": "Search results",
+    "send-now": "Send now"
+  },
+  "Href": {
+    "achievements": "/achievements",
+    "search": "/search",
+    "board_of_directors": "/board-of-directors"
+  },
+  "Contact": {
+    "title": "Contact",
+    "hotline": "Hotline: {hotline}",
+    "book-app": "Book an appointment via App",
+    "book-via-zalo": "Book via Zalo",
+    "book-via-app": "Book via App",
+    "schedule-demand": "Book on demand",
+    "fanpage": "Fanpage",
+    "email": "Email",
+    "email-btn": "Email: {email}",
+    "phone": "Phone",
+    "address": "Address",
+    "social": "Social media"
+  },
+  "Doctor": {
+    "board_of_directors": "Board of Directors",
+    "education": "Education & Work Experience",
+    "activity-image": "Activity Photos",
+    "awards": "Awards & Honors",
+    "bio": "Bio",
+    "position": "Position",
+    "department": "Department",
+    "work_unit": "Work unit",
+    "years_of_experience": "Years of experience",
+    "training_process": "Training process",
+    "work_experience": "Work experience",
+    "member_of_the_organization": "Member of the organization",
+    "books_newspapers_research_papers": "books, newspapers, research papers",
+    "hospital_title": {
+      "director": "Director",
+      "deputy_director": "Deputy Director",
+      "doctor": "Doctor"
+    },
+    "institute_title": {
+      "director": "Director of the Institute",
+      "deputy_director": "Deputy Director of the Institute",
+      "center_director": "Director of the Center",
+      "deputy_center_director": "Deputy Director of the Center",
+      "head_of_institute": "Head of the Institute",
+      "deputy_head_of_institute": "Deputy Head of the Institute"
+    },
+    "department_title": {
+      "head_of_department": "Head of Department",
+      "deputy_head_of_department": "Deputy Head of Department",
+      "acting_head_of_department": "Acting Head of Department",
+      "acting_deputy_head_of_department": "Acting Deputy Head of Department",
+      "head_nurse": "Head Nurse"
+    },
+    "admin_department_title": {
+      "center_director": "Director of the Center",
+      "deputy_center_director": "Deputy Director of the Center",
+      "head_of_department": "Head of Department",
+      "deputy_head_of_department": "Deputy Head of Department",
+      "acting_head_of_department": "Acting Head of Department",
+      "acting_department": "Acting Department Officer",
+      "head_of_division": "Head of Division",
+      "deputy_head_of_division": "Deputy Head of Division",
+      "head_of_unit": "Head of Unit",
+      "deputy_head_of_unit": "Deputy Head of Unit"
+    },
+    "updating": "Updating"
+  },
+  "Validate": {
+    "email": {
+      "required": "Please enter your email!",
+      "length": "Please enter no more than 50 characters!",
+      "invalid": "Please enter a valid email address!",
+      "placeholder": "Email"
+    },
+    "name": {
+      "required": "Please enter your name!",
+      "length": "Please enter no more than 50 characters!",
+      "invalid": "Please enter a valid name!",
+      "placeholder": "Full name"
+    },
+    "phone": {
+      "required": "Please enter your phone number!",
+      "length": "Please enter no more than 20 characters!",
+      "invalid": "Please enter a valid phone number!",
+      "placeholder": "Phone number"
+    },
+    "message": {
+      "required": "Please enter your message!",
+      "length": "Please enter no more than 1000 characters!",
+      "invalid": "Please enter a valid message!",
+      "placeholder": "Note"
+    },
+    "rating": {
+      "required": "Please select your rating!"
+    },
+    "search": {
+      "placeholder": "Search"
+    }
+  },
+  "Rating": {
+    "very-good": "😍 Excellent",
+    "good": "😊 Good",
+    "rather": "🙂 Rather",
+    "medium": "😐 medium",
+    "least": "😞 Least"
+  },
+  "Notification": {
+    "success": {
+      "contact": "Thank you for contacting us!",
+      "review": "Thank you for your feedback!",
+      "footer-register": "Thank you for providing your information!"
+    },
+    "error": {
+      "contact": "An error occurred, please try again!",
+      "review": "An error occurred, please try again!",
+      "footer-register": "An error occurred, please try again!",
+      "verify-recapcha": "reCaptcha verification failed!",
+      "recapcha-not-ready": "reCaptcha is not ready, please try again later!"
+    }
+  },
+  "Footer": {
+    "register-form-title": "Stay updated with our latest news and services",
+    "register-form-des": "Subscribe to receive the latest updates and helpful guides from Military Hospital 175 via your email",
+    "register-label": "Subscribe",
+    "register-placeholder": "Email address",
+    "social-network-label": "Social networks",
+    "policy-label": "Privacy Policy",
+    "terms-services-label": "Terms & Services",
+    "copy-right-label": "Copyright © 2025 Military Hospital 175. All rights reserved.",
+    "note-web-demo": "The new website interface of Military Hospital 175. This trial version was developed by Minh Khang Media Technology Company."
+  }
+}

@@ -1,0 +1,159 @@
+{
+  "Metadata": {
+    "doctor": {
+      "title": "Bác sĩ {name} | Bệnh viện Quân y 175"
+    },
+    "department": {
+      "title": "{name} ({code}) | Bệnh viện Quân y 175"
+    },
+    "unit": {
+      "title": "{name} | Bệnh viện Quân y 175"
+    }
+  },
+  "Common": {
+    "return-home": "Quay về trang chủ",
+    "close": "Đóng",
+    "submit": "Gửi",
+    "view-more": "Xem thêm",
+    "view-detail": "Xem chi tiết",
+    "no-data": "Không có dữ liệu!",
+    "empty-page": "Trang không tồn tại!",
+    "return-main-menu": "Quay lại menu chính",
+    "expand": "Mở rộng",
+    "collapse": "Thu gọn",
+    "all": "Tất cả",
+    "search-results": "Kết quả tìm kiếm",
+    "send-now": "Gửi ngay"
+  },
+  "Href": {
+    "achievements": "/thanh-tich",
+    "search": "/tim-kiem",
+    "board_of_directors": "/ban-giam-doc"
+  },
+  "Contact": {
+    "title": "Liên hệ",
+    "hotline": "Hotline: {hotline}",
+    "book-app": "Đặt khám trên App",
+    "book-via-zalo": "Đặt khám qua Zalo",
+    "book-via-app": "Đặt lịch qua App",
+    "schedule-demand": "Đặt khám theo yêu cầu",
+    "fanpage": "Fanpage",
+    "email": "Email",
+    "email-btn": "Email: {email}",
+    "phone": "Điện thoại",
+    "address": "Địa chỉ",
+    "social": "Mạng xã hội"
+  },
+  "Doctor": {
+    "board_of_directors": "Ban Giám đốc",
+    "education": "Học vấn & Quá trình công tác",
+    "activity-image": "Hình ảnh hoạt động",
+    "awards": "Giải thưởng & Danh hiệu",
+    "bio": "Giới thiệu",
+    "position": "Chức vụ",
+    "department": "Chuyên khoa",
+    "work_unit": "Đơn vị công tác",
+    "years_of_experience": "Số năm kinh nghiệm",
+    "training_process": "Quá trình đào tạo",
+    "work_experience": "Kinh nghiệm làm việc",
+    "member_of_the_organization": "Thành viên của tổ chức",
+    "books_newspapers_research_papers": "Sách, báo, công trình nghiên cứu",
+    "hospital_title": {
+      "director": "Giám đốc",
+      "deputy_director": "Phó Giám đốc",
+      "doctor": "Bác sĩ điều trị"
+    },
+    "institute_title": {
+      "director": "Giám đốc Viện",
+      "deputy_director": "Phó Giám đốc Viện",
+      "center_director": "Giám đốc Trung tâm",
+      "deputy_center_director": "Phó Giám đốc Trung tâm",
+      "head_of_institute": "Viện trưởng",
+      "deputy_head_of_institute": "Phó viện trưởng"
+    },
+    "department_title": {
+      "head_of_department": "Chủ nhiệm Khoa",
+      "deputy_head_of_department": "Phó Chủ nhiệm Khoa",
+      "acting_head_of_department": "Phụ trách Chủ nhiệm Khoa",
+      "acting_deputy_head_of_department": "Phụ trách Phó Chủ nhiệm Khoa",
+      "head_nurse": "Điều dưỡng trưởng"
+    },
+    "admin_department_title": {
+      "center_director": "Giám đốc Trung tâm",
+      "deputy_center_director": "Phó Giám đốc Trung tâm",
+      "head_of_department": "Trưởng phòng",
+      "deputy_head_of_department": "Phó Trưởng phòng",
+      "acting_head_of_department": "Phụ trách Trưởng phòng",
+      "acting_department": "Phụ trách Phòng",
+      "head_of_division": "Trưởng ban",
+      "deputy_head_of_division": "Phó Trưởng ban",
+      "head_of_unit": "Chủ nhiệm",
+      "deputy_head_of_unit": "Phó Chủ nhiệm"
+    },
+    "updating": "Đang cập nhật"
+  },
+  "Validate": {
+    "email": {
+      "required": "Vui lòng nhập email của bạn!",
+      "length": "Vui lòng nhập không quá 50 ký tự!",
+      "invalid": "Vui lòng nhập đúng định dạng email!",
+      "placeholder": "Email"
+    },
+    "name": {
+      "required": "Vui lòng nhập tên của bạn!",
+      "length": "Vui lòng nhập không quá 50 ký tự!",
+      "invalid": "Vui lòng nhập đúng định dạng tên!",
+      "placeholder": "Họ và tên"
+    },
+    "phone": {
+      "required": "Vui lòng nhập số điện thoại của bạn!",
+      "length": "Vui lòng nhập không quá 20 ký tự!",
+      "invalid": "Vui lòng nhập đúng định dạng số điện thoại!",
+      "placeholder": "Số điện thoại"
+    },
+    "message": {
+      "required": "Vui lòng nhập tin nhắn của bạn!",
+      "length": "Vui lòng nhập không quá 1000 ký tự!",
+      "invalid": "Vui lòng nhập đúng định dạng!",
+      "placeholder": "Ghi chú"
+    },
+    "rating": {
+      "required": "Vui lòng chọn đánh giá của bạn!"
+    },
+    "search": {
+      "placeholder": "Tìm kiếm"
+    }
+  },
+  "Rating": {
+    "very-good": "😍 Rất tốt",
+    "good": "😊 Tốt",
+    "rather": "🙂 Khá",
+    "medium": "😐 Trung bình",
+    "least": "😞 Chưa tốt"
+  },
+  "Notification": {
+    "success": {
+      "contact": "Cảm ơn bạn đã liên hệ với chúng tôi!",
+      "review": "Cảm ơn bạn đã đánh giá chất lượng!",
+      "footer-register": "Cảm ơn bạn đã cung cấp thông tin!"
+    },
+    "error": {
+      "contact": "Xảy ra lỗi, xin vui lòng thử lại!",
+      "review": "Xảy ra lỗi, xin vui lòng thử lại!",
+      "footer-register": "Xảy ra lỗi, xin vui lòng thử lại!",
+      "verify-recapcha": "Xác minh reCaptcha không thành công!",
+      "recapcha-not-ready": "reCaptcha chưa sẵn sàng, vui lòng thử lại sau!"
+    }
+  },
+  "Footer": {
+    "register-form-title": "Theo dõi tin tức và dịch vụ mới nhất của chúng tôi",
+    "register-form-des": "Đăng ký nhận thêm các hướng dẫn giao dịch tuyệt vời từ bệnh viện 175 qua email của bạn",
+    "register-label": "Đăng ký",
+    "register-placeholder": "Địa chỉ email",
+    "social-network-label": "Mạng xã hội",
+    "policy-label": "Chính sách và bảo mật",
+    "terms-services-label": "Điều khoản và dịch vụ",
+    "copy-right-label": "Bản quyền thuộc về Bệnh viện Quân y 175 © 2025",
+    "note-web-demo": "Giao diện website mới của Bệnh viện Quân y 175. Phiên bản thử nghiệm được phát triển bởi Công ty TNHH công nghệ truyền thông Minh Khang"
+  }
+}

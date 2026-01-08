@@ -1,16 +1,20 @@
 import { directusClientWithRest } from '@/src/lib/directus';
 import { aggregate, readItem, readItems } from '@directus/sdk';
+import { routing } from '../i18n/routing';
+import { Locale } from 'next-intl';
 
 export const fnGetAdminDepartments = async ({
   collection,
   limit = 12,
   page = 1,
   keyword = '',
+  locale = routing.defaultLocale
 }: {
   collection: string;
   limit?: number;
   page?: number;
   keyword?: string;
+  locale?: Locale
 }) => {
   const filter: any = {};
   if (keyword) {
@@ -58,9 +62,11 @@ export const fnGetAdminDepartments = async ({
 export const getTotalAdminDepartmentCount = async ({
   collection,
   keyword,
+  locale = routing.defaultLocale
 }: {
   collection: string;
   keyword?: string;
+  locale?: Locale
 }) => {
   try {
     const filter: any = {};

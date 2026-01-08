@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
@@ -25,7 +25,7 @@ export default function NumberSplit({ data, dataDetail }: CommonSection) {
   if (!hasContent) return null;
 
   return (
-    <div className="bg-primary-50 p-[32px_0_24px] lg:p-[48px_0_32px] xl:p-[60px_0_32px] 2xl:p-[80px_0_48px] 3xl:p-[100px_0_56px] 4xl:p-[120px_0_60px]">
+    <section className="bg-primary-50 p-[32px_0_24px] lg:p-[48px_0_32px] xl:p-[60px_0_32px] 2xl:p-[80px_0_48px] 3xl:p-[100px_0_56px] 4xl:p-[120px_0_60px]">
       <div className="container">
         <div className="grid grid-cols-1 gap-4 bg-white p-4 md:p-5 lg:grid-cols-2 lg:gap-0 lg:p-6 xl:p-7 2xl:p-8 3xl:p-9 4xl:p-10">
           <div className="relative aspect-[4/3] overflow-hidden">
@@ -139,6 +139,6 @@ export default function NumberSplit({ data, dataDetail }: CommonSection) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

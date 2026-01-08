@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { CommonSection } from '@/src/types/pageBuilder';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -52,7 +52,7 @@ export default function GallerySliderTall({ data }: CommonSection) {
   };
 
   return (
-    <div className="py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
+    <section className="py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
       <h1 className="container section-title text-center">{data?.title}</h1>
 
       {/* ===== MOBILE: SLIDER ===== */}
@@ -105,7 +105,7 @@ export default function GallerySliderTall({ data }: CommonSection) {
           trigger={<span />} // trigger dummy vì control bằng state
         />
       )}
-    </div>
+    </section>
   );
 }
 

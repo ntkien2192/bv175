@@ -41,7 +41,7 @@ export default function NumberWithText({ data, dataDetail }: CommonSection) {
                 )}
 
                 <div
-                  className="text-sm font-normal text-[#ACD1B8] lg:text-base 2xl:text-lg 4xl:text-xl"
+                  className="text-sm font-normal text-white lg:text-base 2xl:text-lg 4xl:text-xl"
                   dangerouslySetInnerHTML={{
                     __html: item?.text,
                   }}

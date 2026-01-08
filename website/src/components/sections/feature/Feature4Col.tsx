@@ -24,7 +24,7 @@ export default function Feature4Col({ data }: CommonSection) {
           ></div>
 
           <Link
-            href={`${data?.buttons?.[0]?.url}`}
+            href={`${data?.buttons?.[0]?.url}` as any}
             className="btn-danger mt-4 lg:mt-5 2xl:mt-6"
             aria-label="Xem tất cả chuyên khoa"
           >
@@ -41,7 +41,7 @@ export default function Feature4Col({ data }: CommonSection) {
         {data?.items?.map((item: any, index: number) => (
           <Link
             key={index}
-            href={`${item?.buttons?.[0]?.url || ''}`}
+            href={`${item?.buttons?.[0]?.url || ''}` as any}
             aria-label="Xem chi tiết chuyên khoa"
             className="group relative hidden flex-col justify-between gap-3 bg-primary-50 p-3 transition-all duration-200 hover:bg-primary-600 hover:shadow-[0_25px_45px_-12px_rgba(18,26,43,0.20)] md:flex xl:gap-4 xl:p-4"
           >
@@ -59,7 +59,7 @@ export default function Feature4Col({ data }: CommonSection) {
                   {item?.title}
                 </div>
                 <div
-                  className="line-clamp-3 h-[60px] text-sm 3xl:text-base 3xl:h-[72px] font-normal text-[#3F3F46] transition-all duration-200 group-hover:text-[#D1E6D7]"
+                  className="line-clamp-3 h-[60px] text-sm 3xl:text-base 3xl:h-[72px] font-normal text-[#3F3F46] transition-all duration-200 group-hover:text-primary-50/90"
                   dangerouslySetInnerHTML={{
                     __html: item?.blurb,
                   }}
@@ -99,7 +99,7 @@ export default function Feature4Col({ data }: CommonSection) {
             {data?.items?.map((item: any, index: number) => (
               <SwiperSlide key={index}>
                 <Link
-                  href={`${item?.buttons?.[0]?.url || ''}`}
+                  href={`${item?.buttons?.[0]?.url || ''}` as any}
                   aria-label="Xem chi tiết chuyên khoa"
                   className="group relative flex flex-col justify-between gap-3 bg-primary-50 p-3 transition-all duration-200 hover:bg-primary-600 hover:shadow-[0_25px_45px_-12px_rgba(18,26,43,0.20)] xl:gap-4 xl:p-4"
                 >

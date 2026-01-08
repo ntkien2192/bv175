@@ -5,11 +5,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import NewsCard from '../news/NewsCard';
-import { fnGetListItemByEndpoint } from '@/src/services/common';
 import { getListNews } from '@/src/services/news';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
+import { useLocale } from 'next-intl';
 
 const Posts3Col = ({ data }: CommonSection) => {
+  const locale = useLocale()
   const [newsData, setNewsData] = useState<any>([]);
   const category = data?.custom?.category;
 
@@ -21,6 +22,7 @@ const Posts3Col = ({ data }: CommonSection) => {
           page: 1,
           limit: 3,
           category,
+          locale
         });
 
         setNewsData(response);
@@ -33,7 +35,7 @@ const Posts3Col = ({ data }: CommonSection) => {
   }, [data]);
 
   return (
-    <div className="py-10 text-center xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
+    <section className="py-10 text-center xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
       <div className="section-sub-title">{data?.subtitle}</div>
       {data?.title && <h1 className="section-title">{data?.title}</h1>}
 
@@ -78,7 +80,7 @@ const Posts3Col = ({ data }: CommonSection) => {
           </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

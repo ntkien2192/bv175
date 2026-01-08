@@ -5,9 +5,12 @@ import { formatDate } from '@/src/utils/validate';
 import { CommonSection } from '@/src/types/pageBuilder';
 import Fancybox from '../../common/Fancybox';
 import { useEffect } from 'react';
-import { Link } from '@/src/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export default function NewsDetail({ data, dataDetail }: CommonSection) {
+  const t = useTranslations('Format');
+  const transContent = dataDetail?.translations?.[0];
 
   useEffect(() => {
     const container = document.querySelector(
@@ -25,7 +28,6 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
     });
   }, [dataDetail]);
 
-
   return (
     <section className="container my-10 lg:my-12 2xl:my-[72px] 3xl:my-20">
       <div className="mt-6 flex flex-col gap-6 md:grid md:grid-cols-[auto,220px] md:flex-row lg:mt-10 lg:grid-cols-[auto,260px] lg:gap-8 lg:px-6 xl:gap-11 xl:px-[60px] 2xl:gap-12 2xl:px-[100px] 3xl:gap-[60px] 3xl:px-[80px] 4xl:mt-[60px] 4xl:px-[160px]">
@@ -34,8 +36,8 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
           {/* Cover */}
           <div className="relative aspect-video w-full">
             <NextImg
-              src={getAssetUrlById(dataDetail?.cover)}
-              alt={`${dataDetail?.title}`}
+              src={getAssetUrlById(transContent?.cover)}
+              alt={`${transContent?.title}`}
               objectFit="cover"
             />
           </div>
@@ -49,14 +51,14 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
                   alt="calendar"
                 />
               </div>
-              {formatDate(dataDetail?.date_published)}
+              {formatDate(dataDetail?.date_published, t('date'))}
             </div>
 
             {/* title */}
             <h1
               className="mb-5 text-lg font-bold !leading-normal text-primary-600 lg:mb-6 lg:text-2xl xl:mb-7 xl:text-[28px] 3xl:mb-8 3xl:text-[30px] 4xl:text-[32px]"
               dangerouslySetInnerHTML={{
-                __html: dataDetail?.title,
+                __html: transContent?.title,
               }}
             ></h1>
           </div>
@@ -65,7 +67,7 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
           <div
             className="text-sm font-bold text-gray-950 lg:text-base 3xl:text-lg"
             dangerouslySetInnerHTML={{
-              __html: dataDetail?.blurb,
+              __html: transContent?.blurb,
             }}
           ></div>
 
@@ -83,7 +85,7 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
             <div
               className="content-wrapper content-fancybox !text-sm font-normal text-gray-950 lg:!text-base 3xl:!text-lg"
               dangerouslySetInnerHTML={{
-                __html: dataDetail?.content,
+                __html: transContent?.content,
               }}
             ></div>
           </Fancybox>
@@ -99,20 +101,24 @@ export default function NewsDetail({ data, dataDetail }: CommonSection) {
                 },
               }}
             >
-              <div className='grid grid-cols-2 2xl:grid-cols-3 gap-3 xl:gap-4 2xl:mt-5 xl:mt-4 md:mt-3 mt-2'>
+              <div className="mt-2 grid grid-cols-2 gap-3 md:mt-3 xl:mt-4 xl:gap-4 2xl:mt-5 2xl:grid-cols-3">
                 {dataDetail?.files?.map((item: any, index: number) => (
                   <Link
                     key={index}
                     href={getAssetUrlById(item?.directus_files_id)}
                     data-fancybox="gallery"
-                    className='relative block overflow-hidden aspect-square'                >
-                    <NextImg src={getAssetUrlById(item?.directus_files_id)} alt='gallery' objectFit='cover' />
+                    className="relative block aspect-square overflow-hidden"
+                  >
+                    <NextImg
+                      src={getAssetUrlById(item?.directus_files_id)}
+                      alt="gallery"
+                      objectFit="cover"
+                    />
                   </Link>
                 ))}
               </div>
             </Fancybox>
           )}
-
         </div>
 
         {/* Sidebar */}

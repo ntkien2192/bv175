@@ -7,7 +7,7 @@ export default function Card2ColWithBlurb({ data, dataDetail }: CommonSection) {
   if (hasContent === null || hasContent.length === 0) return null;
 
   return (
-    <div className="py-8 lg:py-12 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px] 4xl:py-[120px]">
+    <section className="py-8 lg:py-12 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px] 4xl:py-[120px]">
       <div className="container space-y-4 md:space-y-6 lg:space-y-8 xl:space-y-10 2xl:space-y-14 3xl:space-y-[60px]">
         <div className="space-y-1">
           <div className="section-sub-title">{data?.subtitle}</div>
@@ -45,6 +45,6 @@ export default function Card2ColWithBlurb({ data, dataDetail }: CommonSection) {
           })}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

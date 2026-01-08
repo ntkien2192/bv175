@@ -15,42 +15,39 @@ export default function Team3Col({ data }: CommonSection) {
   const otherDoctors = data?.doctors?.slice(1);
 
   return (
-    <>
-      {/* Banner */}
-      <div className="bg-white py-10 lg:py-[60px] xl:py-[80px] 3xl:py-[120px]">
-        <div className="container flex flex-col items-center gap-10">
-          {/* ⭐ Doctor đứng đầu (Giám đốc) */}
-          {firstDoctor && (
-            <div className="flex w-full justify-center">
-              <div className="w-full max-w-[240px] md:max-w-[300px] xl:max-w-[428px]">
-                <DirectorCard item={firstDoctor} link={data?.buttons?.[0]?.url} />
-              </div>
+    <section className="bg-white py-10 lg:py-[60px] xl:py-[80px] 3xl:py-[120px]">
+      <div className="container flex flex-col items-center gap-10">
+        {/* ⭐ Doctor đứng đầu (Giám đốc) */}
+        {firstDoctor && (
+          <div className="flex w-full justify-center">
+            <div className="w-full max-w-[240px] md:max-w-[300px] xl:max-w-[428px]">
+              <DirectorCard item={firstDoctor} link={data?.buttons?.[0]?.url} />
             </div>
-          )}
-
-          {/* ⭐ 6 người còn lại */}
-          <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 md:gap-12 xl:gap-14 4xl:gap-[116px]">
-            {otherDoctors?.map((item: any, index: number) => (
-              <DoctorCard
-                key={index}
-                item={item}
-                avatarType="uniform_avatar"
-                subTitle="hospital_title"
-                isHover={false}
-                isRounded={false}
-                link={data?.buttons?.[0]?.url}
-              />
-            ))}
           </div>
+        )}
+
+        {/* ⭐ 6 người còn lại */}
+        <div className="grid w-full grid-cols-2 gap-4 md:grid-cols-3 md:gap-12 xl:gap-14 4xl:gap-[116px]">
+          {otherDoctors?.map((item: any, index: number) => (
+            <DoctorCard
+              key={index}
+              item={item}
+              avatarType="uniform_avatar"
+              subTitle="hospital_title"
+              isHover={false}
+              isRounded={false}
+              link={data?.buttons?.[0]?.url}
+            />
+          ))}
         </div>
       </div>
-    </>
+    </section>
   );
 }
 
-const DirectorCard = ({item, link }: { item: any, link: any }) => (
+const DirectorCard = ({ item, link }: { item: any, link: any }) => (
   <Link
-    href={`${link}/${item?.slug}`}
+    href={`${link}/${item?.slug}` as any}
     aria-label="Xem chi tiết bác sĩ"
     className="group block space-y-3 2xl:space-y-[14px] 3xl:space-y-4"
   >
@@ -131,18 +128,18 @@ function DoctorCard({
 }: DoctorCardProps) {
 
   const renderSubTitleByType: Record<DoctorCardProps['subTitle'], JSX.Element> =
-    {
-      specialty: <>{item?.specialty}</>,
-      hospital_title: (
-        <>{hospitalTitleMap[item?.hospital_title] ?? item?.hospital_title}</>
-      ),
-    };
+  {
+    specialty: <>{item?.specialty}</>,
+    hospital_title: (
+      <>{hospitalTitleMap[item?.hospital_title] ?? item?.hospital_title}</>
+    ),
+  };
 
   const avatarId = item?.[avatarType]?.id ?? item?.[avatarType];
 
   return (
     <Link
-      href={`${link}/${item?.slug}`}
+      href={`${link}/${item?.slug}` as any}
       aria-label="Xem chi tiết bác sĩ"
       className="sm:space-y-4 group block space-y-3 md:space-y-5 xl:space-y-[10px] 2xl:space-y-[14px] 3xl:space-y-4"
     >
@@ -154,7 +151,7 @@ function DoctorCard({
           bgColor,
           isRounded && 'rounded-[8px]',
           isHover &&
-            'transition-colors duration-200',
+          'transition-colors duration-200',
         )}
         style={{
           aspectRatio: avatarRatio,

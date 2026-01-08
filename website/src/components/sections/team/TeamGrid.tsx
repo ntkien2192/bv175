@@ -16,18 +16,14 @@ const TeamGrid = ({ data }: CommonSection) => {
         {data?.title && (
           <h2
             className="section-title px-6 uppercase text-primary-600 md:px-0"
-            dangerouslySetInnerHTML={{
-              __html: data?.title,
-            }}
-          ></h2>
+            dangerouslySetInnerHTML={{ __html: data?.title }}
+          />
         )}
 
         <div
           className="section-content px-6 pt-4 text-justify md:px-0 lg:pt-5 2xl:pt-6"
-          dangerouslySetInnerHTML={{
-            __html: data?.blurb,
-          }}
-        ></div>
+          dangerouslySetInnerHTML={{ __html: data?.blurb }}
+        />
 
         <div className="hidden space-y-8 pt-10 md:block md:pt-6 lg:space-y-10 lg:pt-8 xl:space-y-12 xl:pt-10 3xl:space-y-14 3xl:pt-12">
           {data?.items.map((item: any, index: number) => (
@@ -44,9 +40,8 @@ const TeamGrid = ({ data }: CommonSection) => {
         <div className="relative w-full pt-10 md:hidden">
           <Swiper
             touchEventsTarget="container"
-            grabCursor={true}
+            grabCursor
             slidesPerView={1.1}
-            loop={false}
             spaceBetween={16}
             speed={500}
             className="!w-full !px-6"
@@ -55,6 +50,7 @@ const TeamGrid = ({ data }: CommonSection) => {
               <SwiperSlide key={'card_' + index}>
                 <div id={item?.buttons?.[0]?.url}>
                   <LeaderCard
+                    key={'card_' + index}
                     item={item}
                     directionLTR={index % 2 === 0}
                     data={data}
@@ -81,9 +77,15 @@ const LeaderCard = ({
   data: any;
 }) => {
   const t = useTranslations('Doctor');
-
   const [expanded, setExpanded] = useState(false);
+  console.log('🚀 ~ LeaderCard ~ expanded:', expanded);
   const { conditions } = useGsapMatchMedia();
+
+  /** PANEL CÓ NỘI DUNG HAY KHÔNG */
+  const hasPanelContent =
+    !!item?.content?.contents?.[0] ||
+    (item?.cover?.length ?? 0) > 1 ||
+    !!item?.content?.contents?.[1];
 
   return (
     <div className="relative rounded-[6px] bg-primary-50 lg:rounded-xl 2xl:rounded-[20px] 3xl:rounded-[24px]">
@@ -154,32 +156,25 @@ const LeaderCard = ({
           <div
             className={clsx(
               'text-justify text-sm font-normal !leading-normal duration-200 md:text-xs lg:text-sm xl:text-base 3xl:text-lg 4xl:text-xl',
-              expanded ? 'text-primary-300' : 'text-gray-700',
+              expanded ? '!text-primary-300' : '!text-gray-700',
             )}
             dangerouslySetInnerHTML={{
               __html: item?.blurb,
             }}
           ></div>
 
-          {/* see more */}
-          <div
-            className={clsx(
-              'flex items-center gap-1 text-sm font-bold text-[#092E15] transition-all duration-200 lg:text-base',
-              expanded ? 'opacity-0' : 'opacity-100',
-            )}
-          >
-            {data?.buttons?.[0]?.title}
-            <div
-              className={clsx(
-                'relative size-5 transition-all duration-200 xl:size-6',
-              )}
-            >
-              <NextImg
-                src={getAssetUrlById(data?.buttons?.[0]?.icon?.id)}
-                alt="star icon"
-              />
+          {/* XEM THÊM */}
+          {hasPanelContent && !expanded && (
+            <div className="flex items-center gap-1 text-sm font-bold text-[#092E15]">
+              {data?.buttons?.[0]?.title}
+              <div className="relative size-5">
+                <NextImg
+                  src={getAssetUrlById(data?.buttons?.[0]?.icon?.id)}
+                  alt="icon"
+                />
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         {/* Avatar */}
@@ -197,16 +192,14 @@ const LeaderCard = ({
         </div>
       </div>
 
-      {/* Info panel - (TODO) chưa responsive theo design */}
+      {/* Info panel */}
       <div
         className={clsx(
           'overflow-hidden transition-all duration-500 ease-out',
           expanded ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0',
         )}
       >
-        {(item?.content?.contents?.[0] ||
-          item?.cover?.length > 1 ||
-          item?.content?.contents?.[1]) && (
+        {hasPanelContent && (
           <div className="2xl:space-8 relative z-0 space-y-6 overflow-hidden rounded-b-[6px] bg-primary-50 p-4 md:p-[32px_16px] lg:rounded-b-xl lg:p-6 xl:space-y-7 xl:p-[40px_32px] 2xl:rounded-b-[20px] 2xl:p-[48px_32px] 3xl:space-y-9 3xl:rounded-b-[24px] 3xl:p-[52px_32px] 4xl:space-y-10 4xl:p-[60px_40px]">
             {item?.content?.contents?.[0] && (
               <div className="space-y-2">

@@ -1,7 +1,5 @@
 import { CommonSection } from '@/src/types/pageBuilder';
 import React from 'react';
-import NextImg from '../../common/next-img';
-import { getAssetUrlById } from '@/src/utils/image';
 
 export default function HeroBackgroundsFocus({ data }: CommonSection) {
   return (

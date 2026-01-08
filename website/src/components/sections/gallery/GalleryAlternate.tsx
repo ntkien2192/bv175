@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
@@ -12,7 +12,7 @@ export default function GalleryAlternate({ data }: CommonSection) {
   const { paginationClass, paginationConfig } = useSwiperPagination();
 
   return (
-    <div className="py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
+    <section className="py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
       <div
         className="section-title container uppercase text-primary-600"
         dangerouslySetInnerHTML={{
@@ -97,6 +97,6 @@ export default function GalleryAlternate({ data }: CommonSection) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

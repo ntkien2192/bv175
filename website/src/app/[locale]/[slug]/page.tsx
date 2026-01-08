@@ -8,6 +8,8 @@ import { Locale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 
+export const revalidate = 300;
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
@@ -15,17 +17,16 @@ type Props = {
 export function generateStaticParams() {
   return routing.locales.map((locale: string) => ({ locale }));
 }
-export const dynamic = 'force-dynamic';
-
+// export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(
   { params }: Props,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
 
   const data = await fnGetPageBySlug(slug);
-  const seo = createSeoData(data?.seo) ?? {};
+  const seo = createSeoData(data?.seo, locale) ?? {};
   return seo;
 }
 

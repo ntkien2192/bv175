@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useState } from 'react';
+import React from 'react';
 import NextImg from '../common/next-img';
 import { getAssetUrlById } from '@/src/utils/image';
 import * as Accordion from '@radix-ui/react-accordion';
@@ -10,7 +10,7 @@ import {
   AccordionTrigger,
 } from '../ui/accordion';
 import { getDoctorTitles } from '@/src/utils/render-doctor-title';
-import { _Translator, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/src/i18n/navigation';
 
 export default function DoctorDetail({ data, dataDetail }: CommonSection) {
@@ -46,7 +46,7 @@ export default function DoctorDetail({ data, dataDetail }: CommonSection) {
   );
 
   return (
-    <div className="bg-primary-50 py-6 md:py-10">
+    <section className="bg-primary-50 py-6 md:py-10">
       <div className="container grid grid-cols-11 gap-6 md:gap-[68px] lg:gap-8 xl:gap-10 3xl:gap-12 4xl:gap-14">
         <div className="col-span-full flex flex-col items-stretch gap-16 md:flex-row md:items-start md:gap-7 lg:col-span-4 lg:flex-col lg:items-stretch lg:gap-[72px]">
           <div className="relative aspect-[480/600] w-full bg-gray-200 md:basis-1/2 lg:basis-0">
@@ -205,7 +205,7 @@ export default function DoctorDetail({ data, dataDetail }: CommonSection) {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

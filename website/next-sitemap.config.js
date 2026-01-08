@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://benhvien175.vn',
+  siteUrl: process.env.SITE_URL,
   changefreq: 'daily',
   // here is the new code
   priority: 0.8,

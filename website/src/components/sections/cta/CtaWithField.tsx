@@ -5,7 +5,7 @@ import FormContact from './FormContact';
 
 export default function CtaWithField({ data }: CommonSection) {
   return (
-    <div className="container space-y-8 py-10 lg:py-12 xl:space-y-10 xl:py-16 2xl:space-y-12 2xl:py-[72px] 3xl:space-y-14 3xl:py-[80px] 4xl:space-y-16 4xl:py-[100px]">
+    <section className="container space-y-8 py-10 lg:py-12 xl:space-y-10 xl:py-16 2xl:space-y-12 2xl:py-[72px] 3xl:space-y-14 3xl:py-[80px] 4xl:space-y-16 4xl:py-[100px]">
       <div className="grid grid-cols-1 gap-6 md:gap-7 lg:grid-cols-2 lg:gap-8 xl:gap-9 2xl:gap-10 3xl:gap-11 4xl:gap-12">
         <div>
           {data?.title && (
@@ -48,6 +48,6 @@ export default function CtaWithField({ data }: CommonSection) {
           ></div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

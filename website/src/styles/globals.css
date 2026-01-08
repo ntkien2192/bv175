@@ -23,6 +23,7 @@ body {}
   src: url('/assets/fonts/Plus-Jakarta/PlusJakartaSans-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -30,6 +31,7 @@ body {}
   src: url('/assets/fonts/Plus-Jakarta/PlusJakartaSans-Medium.ttf') format('truetype');
   font-weight: 500;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -37,6 +39,7 @@ body {}
   src: url('/assets/fonts/Plus-Jakarta/PlusJakartaSans-SemiBold.ttf') format('truetype');
   font-weight: 600;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -44,6 +47,7 @@ body {}
   src: url('/assets/fonts/Plus-Jakarta/PlusJakartaSans-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -51,6 +55,7 @@ body {}
   src: url('/assets/fonts/Plus-Jakarta/PlusJakartaSans-ExtraBold.ttf') format('truetype');
   font-weight: 800;
   font-style: normal;
+  font-display: swap;
 }
 
 .grecaptcha-badge {
@@ -226,7 +231,7 @@ body {}
   }
 
   .section-sub-title {
-    @apply text-subTitle font-semibold text-sm 2xl:text-base
+    @apply text-primary-600 font-semibold text-sm 2xl:text-base
   }
 
   .section-content {

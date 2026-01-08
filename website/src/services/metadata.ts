@@ -1,12 +1,12 @@
 import { directusClientWithRest } from '@/src/lib/directus';
 import { readSingleton } from '@directus/sdk';
 import { Locale } from 'next-intl';
+import { cleanTranslationsDeep } from '../utils/metadata';
 
 async function getTopNavigation(locale: Locale) {
   return directusClientWithRest.request(
     readSingleton('top_navigation', {
       fields: ['*'],
-      filter: { language: { _eq: locale } },
     }),
   );
 }
@@ -15,7 +15,6 @@ async function getBottomNavigation(locale: Locale) {
   return directusClientWithRest.request(
     readSingleton('bottom_navigation', {
       fields: ['*'],
-      filter: { language: { _eq: locale } },
     }),
   );
 }
@@ -35,10 +34,14 @@ export async function fnGetMetadata(locale: Locale) {
       getBottomNavigation(locale),
       getSiteMetadata(),
     ]);
+
+    const cleanedTop = cleanTranslationsDeep(topNav?.[0]?.raw_content, locale);
+    const cleanedBottom = cleanTranslationsDeep(bottomNav?.[0]?.raw_content, locale);
+
     return {
       ...metadata,
-      top_navigation: topNav?.[0]?.raw_content,
-      bottom_navigation: bottomNav?.[0]?.raw_content,
+      top_navigation: cleanedTop,
+      bottom_navigation: cleanedBottom,
     };
   } catch (error) {
     console.error('Error getting metadata:', error);

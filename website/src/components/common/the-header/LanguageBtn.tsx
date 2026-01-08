@@ -20,7 +20,7 @@ export default function LanguageBtn({
   const router = useRouter();
 
   const switchLocale = (newLocale: string) => {
-    router.push('/', { locale: newLocale });
+    router.push('/' as any, { locale: newLocale });
   };
 
   return (

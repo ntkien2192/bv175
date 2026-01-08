@@ -76,7 +76,7 @@ export default function SearchHeader({ handleSearch }: SearchHeaderProps) {
             id="search"
             name="search"
             value={searchText}
-            tabIndex={1}
+            // tabIndex={1}
             autoFocus={false}
             onChange={(e) => setSearchText(e.target.value)}
             className="flex-1 border-none bg-transparent bg-none py-3 text-base text-gray-950 outline-none placeholder:text-gray-500 3xl:py-3"

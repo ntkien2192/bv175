@@ -11,7 +11,7 @@ const Posts2Col = ({ data }: CommonSection) => {
   const items = data?.items || [];
 
   return (
-    <div className="py-10 text-center xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
+    <section className="py-10 text-center xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
       <div className="container">
         <div className="section-sub-title">{data?.subtitle}</div>
         {data?.title && <h1 className="section-title">{data?.title}</h1>}
@@ -80,7 +80,7 @@ const Posts2Col = ({ data }: CommonSection) => {
           </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

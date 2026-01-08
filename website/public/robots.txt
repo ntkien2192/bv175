@@ -1,0 +1,13 @@
+# *
+User-agent: *
+Disallow: /admin
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://benhvien175.minhkhang.net
+
+# Sitemaps
+Sitemap: https://benhvien175.minhkhang.net/sitemap.xml

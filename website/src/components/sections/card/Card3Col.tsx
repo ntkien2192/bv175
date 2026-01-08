@@ -4,13 +4,10 @@ import React from 'react';
 import NextImg from '../../common/next-img';
 import { getAssetUrlById } from '@/src/utils/image';
 import 'swiper/css';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Grid } from 'swiper/modules';
-import { cn } from '@/src/lib/utils';
 
 export default function Card3Col({ data }: CommonSection) {
   return (
-    <div className="bg-primary-50 py-8 md:py-10 lg:py-12 xl:py-16 2xl:py-[72px] 3xl:py-[80px] 4xl:py-[100px]">
+    <section className="bg-primary-50 py-8 md:py-10 lg:py-12 xl:py-16 2xl:py-[72px] 3xl:py-[80px] 4xl:py-[100px]">
       <div className="container">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5 lg:gap-6 xl:gap-7 2xl:gap-8 3xl:gap-9 4xl:gap-10">
           <div>
@@ -47,7 +44,7 @@ export default function Card3Col({ data }: CommonSection) {
             </div>))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

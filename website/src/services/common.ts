@@ -1,6 +1,4 @@
-import { readItem } from '@directus/sdk';
-import { directusClient, directusClientWithRest } from '@/src/lib/directus';
-import { parseFilterString } from '../utils/validate';
+import { directusClientWithRest } from '@/src/lib/directus';
 import { readItems } from '@directus/sdk';
 import { customEndpoint } from '@directus/sdk';
 

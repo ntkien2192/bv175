@@ -8,8 +8,11 @@ import { getListNews } from '@/src/services/news';
 import { useParams } from 'next/navigation';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from '@/src/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function HotNewsHero({ data }: CommonSection) {
+  const locale = useLocale()
+  const t = useTranslations("Format")
   const [dataNews, setDataNews] = useState<any>([]);
   const param = useParams() || {};
   const category = (param?.cate as string) || '';
@@ -22,6 +25,7 @@ export default function HotNewsHero({ data }: CommonSection) {
           page: 1,
           limit: 1,
           category: category,
+          locale
         });
 
         setDataNews(response);
@@ -47,18 +51,20 @@ export default function HotNewsHero({ data }: CommonSection) {
           )}
           {dataNews?.length > 0 &&
             dataNews?.map((news: any, index: number) => {
-              const cateUrl = category || news?.categories?.[0]?.category?.slug || '';
+              const cateUrl = category || news?.categories?.[0]?.category?.translations?.[0]?.slug || '';
+
+              const newTrans = news?.translations?.[0] || {}
 
               return (
                 <Link
                   key={index}
-                  href={`${data?.buttons?.[0]?.url}/${cateUrl}/${news?.slug}`}
+                  href={`${data?.buttons?.[0]?.url}/${cateUrl}/${newTrans?.slug}` as any}
                   aria-label="Xem chi tiết tin tức"
                   className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-11 3xl:gap-[52px] 4xl:gap-[60px]"
                 >
                   <div className="relative aspect-video overflow-hidden">
                     <NextImg
-                      src={getAssetUrlById(news?.thumbnail)}
+                      src={getAssetUrlById(newTrans?.thumbnail)}
                       alt="news thumbnail"
                       objectFit="cover"
                     />
@@ -66,13 +72,13 @@ export default function HotNewsHero({ data }: CommonSection) {
 
                   <div className="flex flex-col items-stretch justify-center">
                     <div className="line-clamp-3 text-xl font-semibold uppercase text-primary-600 lg:text-2xl 2xl:text-[28px] 2xl:!leading-[1.5] 3xl:text-[30px] 4xl:text-[32px]">
-                      {news?.title}
+                      {newTrans?.title}
                     </div>
 
                     <div
                       className="line-clamp-3 pt-1.5 text-sm font-normal text-black lg:pt-2 xl:text-base 2xl:pt-3 4xl:pt-4"
                       dangerouslySetInnerHTML={{
-                        __html: news?.blurb,
+                        __html: newTrans?.blurb,
                       }}
                     ></div>
 
@@ -85,7 +91,7 @@ export default function HotNewsHero({ data }: CommonSection) {
                           />
                         </div>
                         <p className="text-sm font-medium text-black lg:text-base 3xl:text-lg 4xl:text-xl">
-                          {formatDate(news?.date_published)}
+                          {formatDate(news?.date_published, t("date"))}
                         </p>
                       </div>
 

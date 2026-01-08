@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -34,17 +34,20 @@ export default function GalleryWithText({ data }: CommonSection) {
               onToggle={setIsOpenDialog}
               videoUrl={embedUrl}
               trigger={
-                <div className="relative h-full w-full cursor-pointer">
-                  <iframe
-                    onClick={(e) => e.stopPropagation()}
-                    title="Video giới thiệu Bệnh viện Quân y 175"
-                    className="!pointer-events-none !m-0 h-full w-full object-cover !p-0"
-                    style={{ display: 'block', border: 'none' }}
-                    src={`https://www.youtube.com/embed/${embedUrl}?modestbranding=1&rel=0`}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
+                <button role='button' className="relative h-full w-full cursor-pointer">
+                  <img
+                    src={`https://img.youtube.com/vi/${embedUrl}/hqdefault.jpg`}
+                    alt="Video Bệnh viện Quân Y 175"
+                    className="h-full w-full object-cover"
+                    loading="lazy"
                   />
-                </div>
+                  <div className="pointer-events-none absolute left-1/2 top-1/2 z-[1] aspect-[512/361] w-[70px] md:w-[60px] lg:w-[70px] -translate-x-1/2 -translate-y-1/2">
+                    <NextImg
+                      src="/assets/images/youtube_play.png"
+                      alt="youtube icon"
+                    />
+                  </div>
+                </button>
               }
             />
           </div>
@@ -73,7 +76,7 @@ export default function GalleryWithText({ data }: CommonSection) {
                       e.stopPropagation();
                       setCurrentTab(index);
                     }}
-                    className={`${currentTab === index ? 'text-primary-600' : 'text-[#71717A]'} relative cursor-pointer pb-[6px] xl:pb-2 text-sm font-medium uppercase transition-colors duration-200 2xl:text-base`}
+                    className={`${currentTab === index ? 'text-primary-600' : 'text-[#71717A]'} relative cursor-pointer pb-[6px] text-sm font-medium uppercase transition-colors duration-200 xl:pb-2 2xl:text-base`}
                   >
                     {item?.title}
                   </div>
@@ -118,7 +121,7 @@ export default function GalleryWithText({ data }: CommonSection) {
                         (itemCover: any, coverIndex: number) => (
                           <Link
                             key={coverIndex}
-                            href={getAssetUrlById(itemCover?.id)}
+                            href={getAssetUrlById(itemCover?.id) as any}
                             data-fancybox="gallery"
                             className="relative block aspect-square"
                           >
@@ -137,7 +140,7 @@ export default function GalleryWithText({ data }: CommonSection) {
                 {data?.buttons?.[0]?.url && (
                   <div className="pt-2 lg:pt-4 2xl:pt-5">
                     <Link
-                      href={`${data?.buttons?.[0]?.url}`}
+                      href={`${data?.buttons?.[0]?.url}` as any}
                       className="btn-danger"
                       aria-label="Chuyển đến trang cơ sở vật chất"
                     >

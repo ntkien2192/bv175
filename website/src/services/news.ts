@@ -2,6 +2,8 @@ import { aggregate, readItem } from '@directus/sdk';
 import { directusClient, directusClientWithRest } from '@/src/lib/directus';
 import { readItems } from '@directus/sdk';
 import { customEndpoint } from '@directus/sdk';
+import { routing } from '../i18n/routing';
+import { Locale } from 'next-intl';
 
 /** Lấy danh sách item - có bộ lọc/ phân trang */
 
@@ -13,6 +15,7 @@ export const getListNews = async ({
   sort = true,
   keyword = '',
   offset = 0,
+  locale = routing.defaultLocale,
 }: {
   collection: string;
   limit?: number;
@@ -21,41 +24,39 @@ export const getListNews = async ({
   keyword?: string;
   category?: string;
   offset?: number;
+  locale?: Locale;
 }) => {
   const filter: any = {};
   if (category) {
     filter.categories = {
       category: {
-        slug: {
-          _eq: category,
+        translations: {
+          languages_code: { _eq: locale },
+          slug: {
+            _eq: category,
+          },
         },
       },
     };
   }
 
+  // search theo content_plain của post_translations
   if (keyword) {
-    filter._or = [
-      {
-        title: {
-          _icontains: keyword,
+    filter.translations = {
+      _and: [
+        {
+          languages_code: { _eq: locale },
         },
-      },
-      {
-        blurb: {
-          _icontains: keyword,
+        {
+          _or: [
+            { title: { _icontains: keyword } },
+            { blurb: { _icontains: keyword } },
+            { content: { _icontains: keyword } },
+            { content_plain: { _icontains: keyword } },
+          ],
         },
-      },
-      {
-        content: {
-          _icontains: keyword,
-        },
-      },
-      {
-        content_plain: {
-          _icontains: keyword,
-        },
-      },
-    ];
+      ],
+    };
   }
 
   try {
@@ -67,14 +68,25 @@ export const getListNews = async ({
         filter,
         fields: [
           'slug',
-          'title',
-          'blurb',
           'thumbnail',
           'date_published',
-          'categories.category.title',
-          'categories.category.slug',
+          'categories.category.translations.*',
+          'translations.*',
         ],
-        // meta: 'filter_count',
+        deep: {
+          translations: {
+            _filter: {
+              languages_code: { _eq: locale },
+            },
+          },
+          categories: {
+            category: {
+              translations: {
+                _filter: { languages_code: { _eq: locale } },
+              },
+            },
+          },
+        },
       }),
     );
 
@@ -89,46 +101,45 @@ export const getTotalNewsCount = async ({
   collection,
   keyword,
   category,
+  locale = routing.defaultLocale,
 }: {
   collection: string;
   keyword?: string;
   category?: string;
+  locale?: Locale;
 }) => {
   try {
     const filter: any = {};
+
     if (category) {
       filter.categories = {
         category: {
-          slug: {
-            _eq: category,
+          translations: {
+            languages_code: { _eq: locale },
+            slug: {
+              _eq: category,
+            },
           },
         },
       };
     }
 
     if (keyword) {
-      filter._or = [
-        {
-          title: {
-            _icontains: keyword,
+      filter.translations = {
+        _and: [
+          {
+            languages_code: { _eq: locale },
           },
-        },
-        {
-          blurb: {
-            _icontains: keyword,
+          {
+            _or: [
+              { title: { _icontains: keyword } },
+              { blurb: { _icontains: keyword } },
+              { content: { _icontains: keyword } },
+              { content_plain: { _icontains: keyword } },
+            ],
           },
-        },
-        {
-          content: {
-            _icontains: keyword,
-          },
-        },
-        {
-          content_plain: {
-            _icontains: keyword,
-          },
-        },
-      ];
+        ],
+      };
     }
 
     // Lấy tất cả id matching filter
@@ -152,22 +163,48 @@ export const getTotalNewsCount = async ({
 export const getNewsDetail = async ({
   collection,
   slug,
+  locale = routing.defaultLocale,
 }: {
   collection: string;
   slug: string;
+  locale: Locale;
 }) => {
   try {
+    const filter = {
+      translations: {
+        languages_code: { _eq: locale },
+        slug: {
+          _eq: slug,
+        },
+      },
+    };
+
     const res = await directusClientWithRest.request(
-      readItem(collection, slug, {
+      readItems(collection, {
+        filter,
+        deep: {
+          translations: {
+            _filter: {
+              _and: [
+                {
+                  slug: { _eq: slug },
+                },
+                {
+                  languages_code: { _eq: locale },
+                },
+              ],
+            },
+          },
+        },
         fields: [
           '*',
-          'categories.category.title',
-          'categories.category.slug',
+          'categories.category.translations.*',
+          'translations.*',
           'files.*',
         ],
       }),
     );
-    return res;
+    return res?.[0];
   } catch (error) {
     console.log('err in getNewsDetail: ', error);
   }
@@ -192,4 +229,45 @@ export const getNewsCategoryDetail = async ({
   }
 };
 
-// fnGetCategoriesNews
+export const fnGetCategoriesNews = async ({
+  collection,
+  limit = 20,
+  category = '',
+  locale = routing.defaultLocale,
+}: {
+  collection: string;
+  limit?: number;
+  category?: string;
+  locale?: Locale;
+}) => {
+  try {
+    const filter: any = {};
+    if (category) {
+      filter.translations = {
+        languages_code: { _eq: locale },
+        slug: {
+          _eq: category,
+        },
+      };
+    }
+
+    const res = await directusClientWithRest.request(
+      readItems(collection, {
+        page: 1,
+        limit,
+        filter,
+        fields: ['*', 'translations.*'],
+        deep: {
+          translations: {
+            _filter: {
+              languages_code: { _eq: locale },
+            },
+          },
+        },
+      }),
+    );
+    return res;
+  } catch (error) {
+    console.log('error in get data: ', error);
+  }
+};

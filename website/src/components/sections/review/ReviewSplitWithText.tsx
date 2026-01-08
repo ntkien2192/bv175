@@ -201,10 +201,10 @@ export default function ReviewSplitWithText({ data }: CommonSection) {
   };
 
   return (
-    <div className="bg-gray-100 py-10 lg:py-12 xl:py-14 2xl:py-16 3xl:py-[72px] 4xl:py-[80px]">
+    <section className="bg-gray-100 py-10 lg:py-12 xl:py-14 2xl:py-16 3xl:py-[72px] 4xl:py-[80px]">
       <div className="container grid grid-cols-1 gap-6 md:gap-8 lg:gap-10 xl:grid-cols-12 xl:gap-0">
         <div className="col-span-full text-center xl:col-span-5 xl:text-start">
-          <div className="section-sub-title !text-primary-500">
+          <div className="section-sub-title !text-primary-600">
             {data?.subtitle}
           </div>
           {data?.title && (
@@ -245,7 +245,7 @@ export default function ReviewSplitWithText({ data }: CommonSection) {
                         shouldValidate: true,
                       })
                     }
-                    className={`${watch('rating') === option?.rating ? 'border-primary-600 bg-primary-50 text-primary-600' : 'border-gray-400 bg-transparent text-gray-500'} flex h-9 items-center justify-center rounded-[4px] border-[2px] px-3 text-sm font-medium transition-all duration-100 hover:border-primary-600 hover:bg-primary-50 hover:text-primary-600 md:h-10 md:px-3 lg:text-base 2xl:h-11 2xl:px-3 3xl:text-lg 3xl:h-12 3xl:px-4 4xl:px-5`}
+                    className={`${watch('rating') === option?.rating ? 'border-primary-600 bg-primary-50 text-primary-600' : 'border-gray-700 bg-transparent text-gray-700'} flex h-9 items-center justify-center rounded-[4px] border-[2px] px-3 text-sm font-medium transition-all duration-100 hover:border-primary-600 hover:bg-primary-50 hover:text-primary-600 md:h-10 md:px-3 lg:text-base 2xl:h-11 2xl:px-3 3xl:text-lg 3xl:h-12 3xl:px-4 4xl:px-5`}
                   >
                     {option?.title}
                   </button>
@@ -338,6 +338,6 @@ export default function ReviewSplitWithText({ data }: CommonSection) {
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

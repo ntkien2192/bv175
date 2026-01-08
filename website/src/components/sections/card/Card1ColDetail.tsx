@@ -17,13 +17,30 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
-import { Link } from '@/src/i18n/navigation';
 import useSwiperPagination from '@/src/hooks/useSwiperPagination';
+import Link from 'next/link';
 
 export default function Card1ColDetail({ event, data }: any) {
   const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
 
   const { paginationClass, paginationConfig } = useSwiperPagination();
+
+  useEffect(() => {
+    if (isOpenModal) {
+      // khóa scroll nền
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    } else {
+      // mở lại scroll
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    };
+  }, [isOpenModal]);
 
   return (
     <Dialog open={isOpenModal} onOpenChange={setIsOpenModal}>
@@ -40,13 +57,13 @@ export default function Card1ColDetail({ event, data }: any) {
 
             <div className="flex flex-col items-stretch justify-center p-3 lg:p-4">
               <div className="line-clamp-3 text-base font-semibold uppercase text-black/90 lg:text-lg 2xl:text-xl 2xl:!leading-[1.5] 3xl:text-2xl">
-                {event?.title}
+                {event?.translations?.[0]?.title}
               </div>
 
               <div
                 className="relative mt-1.5 line-clamp-3 h-[60px] overflow-hidden text-sm font-normal text-black lg:mt-2 xl:h-[72px] xl:text-base 2xl:mt-3 4xl:mt-4"
                 dangerouslySetInnerHTML={{
-                  __html: event?.blurb,
+                  __html: event?.translations?.[0]?.blurb,
                 }}
               ></div>
 
@@ -59,7 +76,7 @@ export default function Card1ColDetail({ event, data }: any) {
                     />
                   </div>
                   <p className="text-sm font-medium text-black lg:text-base 3xl:text-lg 4xl:text-xl">
-                    {event?.timestamp}
+                    {event?.translations?.[0]?.timestamp}
                   </p>
                 </div>
 
@@ -163,14 +180,14 @@ export default function Card1ColDetail({ event, data }: any) {
               </div>
 
               <div className="text-base font-semibold uppercase text-black/90 2xl:text-lg 3xl:text-xl">
-                {event?.title}
+                {event?.translations?.[0]?.title}
               </div>
 
               <div className="h-[1px] bg-[#E8E8E8]"></div>
               <div
                 className="space-y-2 text-sm font-medium text-[#6C6C71]"
                 dangerouslySetInnerHTML={{
-                  __html: event?.content,
+                  __html: event?.translations?.[0]?.content,
                 }}
               ></div>
             </div>

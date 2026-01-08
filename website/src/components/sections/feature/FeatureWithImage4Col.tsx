@@ -3,9 +3,6 @@ import { CommonSection } from '@/src/types/pageBuilder';
 import React from 'react';
 import NextImg from '../../common/next-img';
 import { getAssetUrlById } from '@/src/utils/image';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import CustomLink from '../../common/custom-link';
 export default function FeatureWithImage4Col({ data }: CommonSection) {
   return (

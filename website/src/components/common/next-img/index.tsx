@@ -37,7 +37,7 @@ const NextImg = ({
   return (
     <Image
       id={id}
-      src={src + '?format=webp' || fallback}
+      src={(src || fallback) + '?format=webp'}
       blurDataURL={src || fallback}
       alt={alt}
       className={

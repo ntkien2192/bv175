@@ -8,7 +8,6 @@ export default function PDFViewer({ data }: CommonSection) {
   const button = data?.buttons?.[0];
 
   return (
-
     <section className="container py-[60px] md:py-[80px] xl:py-[120px]">
       <div className="flex flex-col gap-6 md:grid md:grid-cols-[auto,220px] md:flex-row lg:grid-cols-[auto,260px] lg:gap-8 xl:gap-11 2xl:gap-12 3xl:gap-[60px]">
         <div className="space-y-8">

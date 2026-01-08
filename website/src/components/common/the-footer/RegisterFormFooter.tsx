@@ -91,12 +91,12 @@ export default function RegisterFormFooter() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div className="mb-3 text-[13px] md:text-sm font-bold tracking-wide text-white xl:text-sm 3xl:mb-4 3xl:text-base">
+      <div className="mb-3 text-[13px] font-bold tracking-wide text-white md:text-sm xl:text-sm 3xl:mb-4 3xl:text-base">
         {t('Footer.register-form-title')}
       </div>
 
       <div className="h-11 3xl:h-12">
-        <div className="flex h-full w-full gap-1 xl:gap-2 rounded-[6px] bg-white/20 p-[4px_4px_4px_12px] md:p-[6px_6px_6px_16px] backdrop-blur-[9.5px] md:w-[340px] xl:w-[350px] xl:p-[6px_6px_6px_20px] 3xl:w-[416px]">
+        <div className="flex h-full w-full rounded-[6px] bg-white/20 p-[4px_4px_4px_12px] backdrop-blur-[9.5px] md:w-[340px] lg:p-[6px_6px_6px_16px] xl:w-[350px] 2xl:p-[6px_6px_6px_20px] 3xl:w-[416px]">
           <input
             {...register('email')}
             autoComplete="off"
@@ -109,16 +109,10 @@ export default function RegisterFormFooter() {
           <button
             disabled={loading}
             type="submit"
-            className="relative flex items-center gap-[6px] overflow-hidden rounded-[4px] bg-primary-600 p-[4px_12px] xl:p-[8px_16px]"
+            className="relative flex items-center gap-[6px] overflow-hidden rounded-[4px] bg-primary-600 p-[4px_14px] xl:p-[8px_16px]"
           >
-            <h3 className="text-sm font-medium text-white 3xl:text-sm text-nowrap">
+            <div className="text-nowrap text-sm font-medium text-white">
               {t('Footer.register-label')}
-            </h3>
-            <div className="relative size-4">
-              <NextImg
-                src="/assets/icons/arrow_right_white.svg"
-                alt="arrow right white"
-              />
             </div>
 
             <div

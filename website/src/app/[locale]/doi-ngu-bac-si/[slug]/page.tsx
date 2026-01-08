@@ -9,6 +9,8 @@ import { fnGetDoctorDetail } from '@/src/services/doctors';
 import { getLangSlug } from '@/src/i18n/routing';
 import { getTranslations } from 'next-intl/server';
 
+export const revalidate = 600;
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };

@@ -11,7 +11,7 @@ import { useGsapMatchMedia } from '@/src/providers/GsapMatchMediaProvider';
 export default function CardSliderWithBlurb({ data }: CommonSection) {
   const { conditions } = useGsapMatchMedia();
   return (
-    <div className="bg-primary-50 py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px] 4xl:py-[120px]">
+    <section className="bg-primary-50 py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px] 4xl:py-[120px]">
       <div className="section-title container uppercase text-primary-600">
         {data?.title}
       </div>
@@ -147,6 +147,6 @@ export default function CardSliderWithBlurb({ data }: CommonSection) {
           </button>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

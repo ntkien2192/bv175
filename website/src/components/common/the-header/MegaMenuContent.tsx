@@ -35,8 +35,7 @@ export default function MegaMenuContent({ item }: any) {
                   className={`${item_third?.sub_items?.length >= 7 ? 'row-span-2' : ''}`}
                 >
                   {item_third?.url &&
-                  item_third?.title &&
-                  item_third?.title_en ? (
+                  item_third?.title ? (
                     <CustomLink
                       href={item_third?.url || ''}
                       asNavigationLink

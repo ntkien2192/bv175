@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
@@ -47,7 +47,7 @@ export default function InfoWithRightImage({
   }, [dataDetail, paginationClass, paginationConfig]);
 
   return (
-    <div className="bg-primary-50 py-6 md:py-8 lg:py-10 xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
+    <section className="bg-primary-50 py-6 md:py-8 lg:py-10 xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
       <div
         className={`${hasImages ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} container grid grid-cols-1 gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 3xl:gap-[52px] 4xl:gap-[60px]`}
       >
@@ -168,6 +168,6 @@ export default function InfoWithRightImage({
           </Fancybox>
         )}
       </div>
-    </div>
+    </section>
   );
 }

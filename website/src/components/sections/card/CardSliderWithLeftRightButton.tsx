@@ -14,7 +14,7 @@ export default function CardSliderWithLeftRightButton({ data }: CommonSection) {
   const t = useTranslations('Doctor');
 
   return (
-    <div className="flex flex-col items-stretch gap-6 bg-[#F6FAF7] py-10 md:gap-8 md:py-6 lg:py-10 xl:gap-11 xl:py-11 2xl:gap-12 2xl:py-12 3xl:gap-[52px] 3xl:py-[52px] 4xl:gap-[60px] 4xl:py-[60px]">
+    <section className="flex flex-col items-stretch gap-6 bg-[#F6FAF7] py-10 md:gap-8 md:py-6 lg:py-10 xl:gap-11 xl:py-11 2xl:gap-12 2xl:py-12 3xl:gap-[52px] 3xl:py-[52px] 4xl:gap-[60px] 4xl:py-[60px]">
       <div className="container flex items-center justify-between">
         <div>
           {data?.subtitle && (
@@ -167,6 +167,6 @@ export default function CardSliderWithLeftRightButton({ data }: CommonSection) {
           </div>
         )}
       </div>
-    </div>
+    </section>
   );
 }

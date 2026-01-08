@@ -106,7 +106,7 @@ export default function DoctorCard({
             'relative w-full overflow-hidden',
             isRounded && 'rounded-[8px]',
             isHover &&
-              'transition-colors duration-200 group-hover:!border-primary-600 border-[2px] 2xl:border-[3px] border-transparent',
+              'border-[2px] border-transparent transition-colors duration-200 group-hover:!border-primary-600 3xl:border-[3px]',
           )}
           style={{
             aspectRatio: avatarRatio,
@@ -135,7 +135,8 @@ export default function DoctorCard({
             className={cn(
               'font-normal text-[#3F3F46]',
               textSize === 'md' && 'text-xs md:text-sm 2xl:text-base',
-              textSize === 'xl' && 'text-sm md:text-base lg:text-sm xl:text-base 2xl:text-lg',
+              textSize === 'xl' &&
+                'text-sm md:text-base lg:text-sm xl:text-base 2xl:text-lg',
             )}
           >
             {item?.full_title}
@@ -155,9 +156,10 @@ export default function DoctorCard({
 
           <div
             className={cn(
-              'font-medium text-primary-500',
+              'font-medium text-primary-600',
               textSize === 'md' && 'text-xs md:text-sm 2xl:text-base',
-              textSize === 'xl' && 'text-xs md:text-base lg:text-sm xl:text-base 2xl:text-lg',
+              textSize === 'xl' &&
+                'text-xs md:text-base lg:text-sm xl:text-base 2xl:text-lg',
             )}
           >
             {renderSubTitleByType[subTitle]}
@@ -169,7 +171,7 @@ export default function DoctorCard({
     if (isLink) {
       return (
         <Link
-          href={`${url}/${item?.slug}`}
+          href={`${url}/${item?.slug}` as any}
           aria-label="Xem chi tiết bác sĩ"
           className="group block space-y-3 2xl:space-y-[14px] 3xl:space-y-4"
         >
@@ -195,7 +197,7 @@ export default function DoctorCard({
           {item?.full_name}
         </div>
 
-        <div className="pt-[2px] text-sm font-medium text-primary-500 xl:text-base">
+        <div className="pt-[2px] text-sm font-medium text-primary-600 xl:text-base">
           {renderSubTitleByType[subTitle]}
         </div>
       </div>
@@ -203,7 +205,7 @@ export default function DoctorCard({
     if (isLink) {
       return (
         <Link
-          href={`${url}/${item?.slug}`}
+          href={`${url}/${item?.slug}` as any}
           aria-label="Xem chi tiết bác sĩ"
           className="group block"
         >

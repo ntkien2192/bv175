@@ -9,12 +9,13 @@ import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/dist/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PaginationPrimary from '../pagination/PaginationPrimary';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 gsap.registerPlugin(useGSAP, ScrollToPlugin, ScrollTrigger);
 
 export default function NewsListCard({ data }: CommonSection) {
   const t = useTranslations('Common');
+  const locale = useLocale();
   // Animation
   const containerRef = useRef<any>(null);
   const selector = gsap.utils.selector(containerRef);
@@ -69,6 +70,7 @@ export default function NewsListCard({ data }: CommonSection) {
         category: category || '',
         keyword: search || '',
         offset: 1,
+        locale
       });
       setDataNews(response);
     } catch (error) {
@@ -85,6 +87,7 @@ export default function NewsListCard({ data }: CommonSection) {
           collection: data?.collections,
           category: category || '',
           keyword: search || '',
+          locale
         });
         setLength(response);
       } catch (error) {

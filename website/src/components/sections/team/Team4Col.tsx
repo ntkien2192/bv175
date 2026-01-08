@@ -6,7 +6,7 @@ import 'swiper/css/pagination';
 
 export default function Team4Col({ data }: CommonSection) {
   return (
-    <div className="bg-white py-10 md:py-6 lg:py-10 xl:py-[60px] 3xl:py-[80px]">
+    <section className="bg-white py-10 md:py-6 lg:py-10 xl:py-[60px] 3xl:py-[80px]">
       <div className="container grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6 xl:grid-cols-6 xl:gap-4 4xl:gap-x-4 4xl:gap-y-6">
         <div className="col-span-2 flex flex-col justify-center gap-4 2xl:gap-5 3xl:gap-6">
           {data?.title && (
@@ -45,6 +45,6 @@ export default function Team4Col({ data }: CommonSection) {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

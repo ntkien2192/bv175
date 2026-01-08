@@ -38,45 +38,6 @@ const DepartmentDetailPage = ({
   const normalizeText = (str: string) =>
     removeVietnameseMarks(str || '').toLowerCase();
 
-  // const { contextSafe } = useGSAP(
-  //   () => {
-  //     if (!containerRef.current || !sidebarRef.current || !conditions) return;
-  //     const mm = gsap.matchMedia();
-  //     mm.add('(max-width: 767px)', () => {
-  //       ScrollTrigger.create({
-  //         trigger: sidebarRef.current,
-  //         start: () => getPositionFixed(conditions),
-  //         endTrigger: containerRef.current,
-  //         // end: "bottom bottom",
-  //         end: () =>
-  //           `+=${containerRef?.current?.offsetHeight - sidebarRef?.current?.offsetHeight}`,
-  //         pin: true,
-  //         pinSpacing: false,
-  //         pinnedContainer: containerRef?.current,
-  //       });
-  //     });
-
-  //     mm.add('(min-width: 1600px)', () => {
-  //       ScrollTrigger.create({
-  //         trigger: sidebarRef.current,
-  //         start: () => getPositionFixed(conditions),
-  //         endTrigger: containerRef.current,
-  //         // end: "bottom bottom",
-  //         // end: () => `bottom bottom+=${containerRef.current?.offsetHeight || 0}`,
-  //         end: () =>
-  //           `+=${containerRef?.current?.offsetHeight - sidebarRef?.current?.offsetHeight}`,
-  //         pin: true,
-  //         pinSpacing: false,
-  //         pinnedContainer: containerRef?.current,
-  //       });
-  //     });
-  //   },
-  //   {
-  //     scope: containerRef,
-  //     dependencies: [conditions],
-  //   },
-  // );
-
   useEffect(() => {
     async function fetchGroups() {
       try {
@@ -156,7 +117,7 @@ const DepartmentDetailPage = ({
   }, [keyword, parentGroups]);
 
   return (
-    <div className="bg-primary-50">
+    <section className="bg-primary-50">
       {/* Banner + Search box */}
       <div className="md:relative">
         <div
@@ -355,7 +316,7 @@ const DepartmentDetailPage = ({
       {/* Danh sách khoa */}
 
       {/* Đối tác bảo hiểm */}
-    </div>
+    </section>
   );
 };
 
@@ -390,7 +351,7 @@ const DepartmentGroupSection = ({ pGroup }: { pGroup: any }) => {
                 </div>
               ) : (
                 <Link
-                  href={`/${pGroup?.slug}/${group?.slug}`}
+                  href={`/${pGroup?.slug}/${group?.slug}` as any}
                   className={clsx(
                     'cursor-pointer p-[8px_0__4px] text-base font-semibold text-gray-950 underline-offset-4 hover:text-primary-600 hover:underline md:p-[12px_0__4px] lg:p-[16px_0_4px] lg:text-lg 2xl:text-xl',
                   )}
@@ -402,7 +363,7 @@ const DepartmentGroupSection = ({ pGroup }: { pGroup: any }) => {
               <div className="ml-3 mt-4 flex list-none flex-col gap-4 md:ml-5 md:gap-5 xl:ml-7 xl:mt-5 2xl:gap-6 3xl:gap-x-4 3xl:gap-y-5">
                 {group.departments.map((department: any, idx: number) => (
                   <Link
-                    href={'/chuyen-khoa/' + department.slug}
+                    href={'/chuyen-khoa/' + department.slug as any}
                     className={clsx(
                       'text-base font-normal text-gray-950 hover:text-primary-600 hover:underline lg:text-lg 2xl:text-xl',
                     )}
@@ -424,7 +385,7 @@ const DepartmentGroupSection = ({ pGroup }: { pGroup: any }) => {
         <div className="mt-5 flex list-none flex-col gap-3 md:flex-row md:flex-wrap md:gap-4 xl:mt-8 xl:gap-5 2xl:gap-6 3xl:mt-[32px] 3xl:gap-x-4 3xl:gap-y-5">
           {pGroup.departments.map((department: any, idx: number) => (
             <Link
-              href={'/chuyen-khoa/' + department.slug}
+              href={'/chuyen-khoa/' + department.slug as any}
               className={clsx(
                 'text-base font-normal text-gray-950 underline-offset-4 hover:text-primary-600 hover:underline lg:w-[calc(50%-12px)] lg:text-lg 2xl:text-xl',
               )}

@@ -83,6 +83,7 @@ export default function Team2Col({ data, dataDetail }: CommonSection) {
                     isLogo={custom?.is_logo}
                     isHover={custom?.is_hover}
                     isRounded={custom?.is_rounded}
+                    avatarRatio="3/4"
                     isLink={custom?.is_link}
                     textSize={leaderCount < 3 ? 'xl' : 'md'}
                     bgColor="#f4f4f5"

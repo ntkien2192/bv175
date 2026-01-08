@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
@@ -10,11 +10,13 @@ import { getAssetUrlById } from '@/src/utils/image';
 import Fancybox from '../../common/Fancybox';
 import Link from 'next/link';
 import useSwiperPagination from '@/src/hooks/useSwiperPagination';
+import { useTranslations } from 'next-intl';
 
 export default function FancyboxViewer({ data }: CommonSection) {
   const images = data?.cover ?? [];
   const imageStyle = data?.custom || {};
 
+  const t = useTranslations('Common');
   const { paginationClass, paginationConfig } = useSwiperPagination();
 
   return (
@@ -88,7 +90,7 @@ export default function FancyboxViewer({ data }: CommonSection) {
       </Fancybox>
 
       <p className="mt-10 text-center text-sm font-normal italic text-primary-400">
-        Nhấn vào hình để xem rõ hơn
+        {t('click-image')}
       </p>
     </section>
   );

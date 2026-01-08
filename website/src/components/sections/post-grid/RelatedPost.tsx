@@ -11,8 +11,10 @@ import { useParams } from 'next/navigation';
 import { getListNews } from '@/src/services/news';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { Link } from '@/src/i18n/navigation';
+import { useLocale } from 'next-intl';
 
 const RelatedPosts = ({ data }: CommonSection) => {
+  const locale = useLocale()
   const params = useParams() || {};
   const category = (params?.cate as string) || '';
   const [newsData, setNewsData] = useState<any>([]);
@@ -28,6 +30,7 @@ const RelatedPosts = ({ data }: CommonSection) => {
           limit: data?.collection_items_limit,
           sort: isSort,
           category: category,
+          locale
         });
         setNewsData(response);
       } catch (error) {
@@ -39,11 +42,11 @@ const RelatedPosts = ({ data }: CommonSection) => {
   }, [data]);
 
   return (
-    <div className="py-10 lg:py-12 xl:py-14 2xl:py-16 3xl:py-[72px] 4xl:py-20">
+    <section className="py-10 lg:py-12 xl:py-14 2xl:py-16 3xl:py-[72px] 4xl:py-20">
       <div className="container flex items-center justify-between">
         {data?.title && <h1 className="section-title">{data?.title}</h1>}
         <Link
-          href={`${data?.buttons?.[0]?.url}`}
+          href={`${data?.buttons?.[0]?.url}` as any}
           aria-label="Xem tất cả tin tức"
           className="group flex items-center gap-1.5 text-gray-950"
         >
@@ -105,7 +108,7 @@ const RelatedPosts = ({ data }: CommonSection) => {
           </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

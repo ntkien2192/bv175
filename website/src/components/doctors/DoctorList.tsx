@@ -274,7 +274,7 @@ const DoctorList = ({ data }: CommonSection) => {
   }, [fetchDoctorCount, fetchDoctors]);
 
   return (
-    <div className="bg-primary-50">
+    <section className="bg-primary-50">
       {/* Banner + Search box */}
 
       {/* Danh sách bác sĩ */}
@@ -607,7 +607,7 @@ const DoctorList = ({ data }: CommonSection) => {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -15,7 +15,7 @@
     "close": "Close",
     "submit": "Submit",
     "view-more": "View more",
-    "view-detail": "View details",
+    "view-detail": "View more",
     "no-data": "No data available!",
     "empty-page": "This page does not exist!",
     "return-main-menu": "Back to main menu",
@@ -23,7 +23,8 @@
     "collapse": "Collapse",
     "all": "All",
     "search-results": "Search results",
-    "send-now": "Send now"
+    "send-now": "Send now",
+    "click-image": "Click on the image to see it more clearly"
   },
   "Href": {
     "achievements": "/achievements",
@@ -155,5 +156,8 @@
     "terms-services-label": "Terms & Services",
     "copy-right-label": "Copyright © 2025 Military Hospital 175. All rights reserved.",
     "note-web-demo": "The new website interface of Military Hospital 175. This trial version was developed by Minh Khang Media Technology Company."
+  },
+  "Format": {
+    "date": "MMMM D, YYYY"
   }
 }

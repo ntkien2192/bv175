@@ -23,7 +23,8 @@
     "collapse": "Thu gọn",
     "all": "Tất cả",
     "search-results": "Kết quả tìm kiếm",
-    "send-now": "Gửi ngay"
+    "send-now": "Gửi ngay",
+    "click-image": "Nhấn vào hình để xem rõ hơn"
   },
   "Href": {
     "achievements": "/thanh-tich",
@@ -155,5 +156,8 @@
     "terms-services-label": "Điều khoản và dịch vụ",
     "copy-right-label": "Bản quyền thuộc về Bệnh viện Quân y 175 © 2025",
     "note-web-demo": "Giao diện website mới của Bệnh viện Quân y 175. Phiên bản thử nghiệm được phát triển bởi Công ty TNHH công nghệ truyền thông Minh Khang"
+  },
+  "Format": {
+    "date": "DD/MM/YYYY"
   }
 }

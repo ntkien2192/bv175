@@ -1,6 +1,6 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import NextImg from '../../common/next-img';
 import { getAssetUrlById } from '@/src/utils/image';
 import 'swiper/css';
@@ -224,6 +224,7 @@ const SlideContent = ({ item }: any) => {
           alt="media image"
           objectFit="cover"
           className="object-top"
+          loading="eager"
         />
       </div>
 
@@ -233,6 +234,7 @@ const SlideContent = ({ item }: any) => {
           alt="media image"
           objectFit="cover"
           className="object-top"
+          loading="eager"
         />
       </div>
 

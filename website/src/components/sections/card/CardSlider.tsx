@@ -6,7 +6,6 @@ import { getAssetUrlById } from '@/src/utils/image';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { formatDate } from '@/src/utils/validate';
 import Link from 'next/link';
 import CustomLink from '../../common/custom-link';
 import Fancybox from '../../common/Fancybox';
@@ -22,7 +21,7 @@ const CardSlider = ({ data }: CommonSection) => {
   const btn = data?.buttons?.[0];
 
   return (
-    <div className="bg-primary-50 py-10 md:py-6 lg:py-10 2xl:py-20 3xl:py-[100px] 4xl:py-[120px]">
+    <section className="bg-primary-50 py-10 md:py-6 lg:py-10 2xl:py-20 3xl:py-[100px] 4xl:py-[120px]">
       <h3 className="section-title container uppercase text-primary-600">
         {data?.title}
       </h3>
@@ -139,7 +138,7 @@ const CardSlider = ({ data }: CommonSection) => {
           </Link>
         </Fancybox>
       </div>
-    </div>
+    </section>
   );
 };
 

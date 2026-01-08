@@ -8,6 +8,8 @@ import PageBuilder from '@/src/page-builder';
 import { fnGetPageBySlug } from '@/src/services/page';
 import { getLangSlug } from '@/src/i18n/routing';
 
+export const revalidate = 60;
+
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
@@ -16,19 +18,21 @@ export async function generateMetadata(
   { params }: Props,
   _parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const idRegex = /^[a-zA-Z0-9-_]+$/;
   if (!slug || !idRegex.test(slug)) return notFound();
 
-  const data = await getNewsDetail({ collection: 'posts', slug });
-  if (!data) notFound();
+  const data = await getNewsDetail({ collection: 'posts', slug, locale });
+    const transContent = data?.translations?.[0];
 
-  const title = checkValueNull(data?.title, '');
+  if (!transContent) notFound();
 
-  const description = checkValueNull(data?.blurb, '');
+  const title = checkValueNull(transContent?.title, '');
 
-  const imageUrl = data?.thumbnail
-    ? `${process.env.NEXT_PUBLIC_ASSETS_URL}${data.thumbnail}`
+  const description = checkValueNull(transContent?.blurb, '');
+
+  const imageUrl = transContent?.thumbnail
+    ? `${process.env.NEXT_PUBLIC_ASSETS_URL}${transContent.thumbnail}`
     : '/assets/images/open_graph.png';
 
   return {
@@ -54,7 +58,7 @@ export async function generateMetadata(
 
 const NewsDetailPage = async ({ params }: Props) => {
   const { locale, slug } = await params;
-  const post = await getNewsDetail({ collection: 'posts', slug });
+  const post = await getNewsDetail({ collection: 'posts', slug, locale });
   const langSlug = await getLangSlug(locale, 'chi-tiet-bai-viet');
 
   const pageContent = await fnGetPageBySlug(langSlug);

@@ -18,7 +18,7 @@ import { cn } from '@/src/lib/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 type SearchListContentProps = {
@@ -46,6 +46,7 @@ export default function SearchListContent({
   const selector = gsap.utils.selector(containerRef);
 
   const t = useTranslations('Common');
+  const locale = useLocale()
   const searchParams = useSearchParams();
 
   const [data, setData] = useState<any>([]);
@@ -140,6 +141,7 @@ export default function SearchListContent({
         keyword,
         limit,
         page: currentPage,
+        locale
       });
       setData(response || []);
     } catch (error) {
@@ -180,7 +182,7 @@ export default function SearchListContent({
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await registry.getCount({ collection, keyword });
+        const response = await registry.getCount({ collection, keyword, locale });
 
         setLength(response || 0);
         setTotalAll((prev: number) => prev + Number(response || 0));

@@ -74,7 +74,7 @@ export default function MobileMenu({ handleSearch }: MobileMenuProps) {
               className="border-none outline-none"
             >
               <Link
-                href="/"
+                href={"/" as any}
                 aria-label="Chuyển đến trang chủ"
                 className="relative h-[40px] w-[230px] md:h-[46px] md:w-[274px] lg:h-[64px] lg:w-[382px] 2xl:h-[72px] 2xl:w-[430px] 4xl:h-[80px] 4xl:w-[478px]"
               >
@@ -148,7 +148,7 @@ export default function MobileMenu({ handleSearch }: MobileMenuProps) {
                 {/* input search */}
                 <div className="flex h-11 items-stretch gap-2 rounded-[6px] bg-[#F4F4F5] p-[6px_6px_6px_16px] backdrop-blur-[9.5px] md:gap-3 lg:gap-4">
                   <input
-                    tabIndex={1}
+                    // tabIndex={1}
                     autoFocus={false}
                     type="text"
                     value={searchText}
@@ -382,7 +382,7 @@ export default function MobileMenu({ handleSearch }: MobileMenuProps) {
                             key={item_third_index}
                             className="group w-full"
                           >
-                            {item_third?.title && item_third?.title_en && (
+                            {item_third?.title && (
                               <div className="flex w-full items-center justify-between gap-[2px]">
                                 {item_third?.url ? (
                                   <DialogClose
@@ -417,7 +417,7 @@ export default function MobileMenu({ handleSearch }: MobileMenuProps) {
 
                             <AccordionContent>
                               <div
-                                className={`${item_third?.title && item_third?.title_en ? 'pt-4' : 'pt-0'} flex flex-col gap-4 px-5`}
+                                className={`${item_third?.title ? 'pt-4' : 'pt-0'} flex flex-col gap-4 px-5`}
                               >
                                 {item_third?.sub_items?.map(
                                   (item_fourth: any, item_fourth_index: any) =>

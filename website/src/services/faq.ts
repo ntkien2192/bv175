@@ -1,6 +1,8 @@
-import { aggregate, readItem } from '@directus/sdk';
+import { aggregate } from '@directus/sdk';
 import { directusClientWithRest } from '@/src/lib/directus';
 import { readItems } from '@directus/sdk';
+import { routing } from '../i18n/routing';
+import { Locale } from 'next-intl';
 
 /** Lấy danh sách item - có bộ lọc/ phân trang */
 
@@ -9,28 +11,38 @@ export const getListFaq = async ({
   limit = 12,
   page = 1,
   keyword = '',
+  locale = routing.defaultLocale
 }: {
   collection: string;
   limit?: number;
   page?: number;
   sort?: boolean;
   keyword?: string;
+  locale?: Locale;
 }) => {
   const filter: any = {};
+
   if (keyword) {
-    filter._or = [
-      {
-        question: {
-          _icontains: keyword,
+    filter.translations = {
+      _and: [
+        {
+          languages_code: { _eq: locale },
         },
-      },
-      {
-        answer: {
-          _icontains: keyword,
+        {
+          _or: [
+            { question: { _icontains: keyword } },
+            { answer: { _icontains: keyword } },
+          ],
         },
-      },
-    ];
+      ],
+    };
+  } else {
+    filter.translations = {
+      languages_code: { _eq: locale },
+    };
   }
+
+
 
   try {
     const res = await directusClientWithRest.request(
@@ -38,7 +50,14 @@ export const getListFaq = async ({
         page,
         limit,
         filter,
-        fields: ['question', 'answer'],
+        fields: ['*', 'translations.*'],
+        deep: {
+          translations: {
+            _filter: {
+              languages_code: { _eq: locale },
+            },
+          },
+        },
         disableCache: true,
       }),
     );
@@ -53,25 +72,32 @@ export const getListFaq = async ({
 export const getTotalFaqCount = async ({
   collection,
   keyword,
+  locale = routing.defaultLocale
 }: {
   collection: string;
   keyword?: string;
+  locale?: Locale
 }) => {
   try {
     const filter: any = {};
     if (keyword) {
-      filter._or = [
-        {
-          question: {
-            _icontains: keyword,
+      filter.translations = {
+        _and: [
+          {
+            languages_code: { _eq: locale },
           },
-        },
-        {
-          answer: {
-            _icontains: keyword,
+          {
+            _or: [
+              { question: { _icontains: keyword } },
+              { answer: { _icontains: keyword } },
+            ],
           },
-        },
-      ];
+        ],
+      };
+    } else {
+      filter.translations = {
+        languages_code: { _eq: locale },
+      };
     }
 
     // Lấy tất cả id matching filter

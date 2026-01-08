@@ -47,7 +47,7 @@ export default function InfoWithLeftImage({ data, dataDetail }: CommonSection) {
   const hasImages = dataDetail?.technologies_images?.length > 0;
 
   return (
-    <div className="bg-primary-50 py-6 md:py-8 lg:py-10 xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
+    <section className="bg-primary-50 py-6 md:py-8 lg:py-10 xl:py-11 2xl:py-12 3xl:py-[52px] 4xl:py-[60px]">
       <div
         className={`${hasImages ? 'lg:grid-cols-2' : 'lg:grid-cols-1'} container grid grid-cols-1 gap-4 md:gap-6 lg:gap-8 xl:gap-10 2xl:gap-12 3xl:gap-[52px] 4xl:gap-[60px]`}
       >
@@ -160,6 +160,6 @@ export default function InfoWithLeftImage({ data, dataDetail }: CommonSection) {
           </Fancybox>
         )}
       </div>
-    </div>
+    </section>
   );
 }

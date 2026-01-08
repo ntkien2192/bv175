@@ -3,14 +3,13 @@ import CustomLink from '@/src/components/common/custom-link';
 import NextImg from '@/src/components/common/next-img';
 import { CommonSection } from '@/src/types/pageBuilder';
 import { getAssetUrlById } from '@/src/utils/image';
-import Link from 'next/link';
 import React from 'react';
 
 export default function EmbeddedMap({ data }: CommonSection) {
   const buttonViewMap = data?.buttons?.[0] || {};
   const buttonViewMap360 = data?.buttons?.[1] || {};
   return (
-    <div className="container py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
+    <section className="container py-10 md:py-6 lg:py-10 xl:py-[60px] 2xl:py-[80px] 3xl:py-[100px]">
       <h2 className="section-title mt-2 text-center">{data.title}</h2>
 
       <div
@@ -47,6 +46,6 @@ export default function EmbeddedMap({ data }: CommonSection) {
           alt="map-360"
         />
       </CustomLink>
-    </div>
+    </section>
   );
 }

@@ -11,7 +11,7 @@ export default function CtaBasic({ data }: CommonSection) {
   const contact_information = metadata?.contact_information;
 
   return (
-    <div className="relative bg-[#155628] py-[60px] md:py-10 xl:py-12 2xl:py-14 3xl:py-[60px] 4xl:py-[70px]">
+    <section className="relative bg-[#155628] py-[60px] md:py-10 xl:py-12 2xl:py-14 3xl:py-[60px] 4xl:py-[70px]">
       <div className="container flex items-center gap-5 lg:gap-7 xl:gap-10 2xl:gap-12 3xl:gap-[52px] 4xl:gap-[60px]">
         <div className="basis-full space-y-4 md:basis-1/2 md:space-y-5 xl:space-y-6 3xl:space-y-8">
           <Link
@@ -92,6 +92,6 @@ export default function CtaBasic({ data }: CommonSection) {
           alt="cta image"
         />
       </div>
-    </div>
+    </section>
   );
 }

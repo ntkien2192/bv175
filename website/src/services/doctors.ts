@@ -1,5 +1,7 @@
 import { directusClientWithRest } from '@/src/lib/directus';
 import { aggregate, readItem, readItems } from '@directus/sdk';
+import { routing } from '../i18n/routing';
+import { Locale } from 'next-intl';
 
 export const getListDoctors = async ({
   limit = 6,
@@ -18,7 +20,11 @@ export const getListDoctors = async ({
 }) => {
   try {
     // Build filter động theo điều kiện
-    const filter: any = {};
+    const filter: any = {
+      is_admin: {
+        _neq: true,
+      },
+    };
 
     // 1. Keyword search
     if (keyword) {
@@ -77,7 +83,11 @@ export const getDoctorsCount = async ({
 }) => {
   try {
     // Build filter giống getListDoctors
-    const filter: any = {};
+    const filter: any = {
+      is_admin: {
+        _neq: true,
+      },
+    };
 
     // 1. Keyword search
     if (keyword) {
@@ -130,11 +140,13 @@ export const getListDoctorPreview = async ({
   limit = 9,
   page = 1,
   keyword,
+  locale = routing.defaultLocale
 }: {
   collection: string;
   limit?: number;
   page?: number;
   keyword?: string;
+  locale?: Locale
 }) => {
   const filter: any = {};
   if (keyword) {
@@ -147,12 +159,12 @@ export const getListDoctorPreview = async ({
       {
         full_title: {
           _icontains: keyword,
-        }
+        },
       },
       {
         specialty: {
           _icontains: keyword,
-        }
+        },
       },
       {
         departments: {
@@ -164,6 +176,9 @@ export const getListDoctorPreview = async ({
         },
       },
     ];
+  }
+  filter.is_admin = {
+    _neq: true,
   }
 
   try {
@@ -184,9 +199,11 @@ export const getListDoctorPreview = async ({
 export const getTotalDoctorCount = async ({
   collection,
   keyword,
+  locale = routing.defaultLocale
 }: {
   collection: string;
   keyword?: string;
+  locale?: Locale
 }) => {
   try {
     const filter: any = {};
@@ -200,12 +217,12 @@ export const getTotalDoctorCount = async ({
         {
           full_title: {
             _icontains: keyword,
-          }
+          },
         },
         {
           specialty: {
             _icontains: keyword,
-          }
+          },
         },
         {
           departments: {
@@ -217,6 +234,9 @@ export const getTotalDoctorCount = async ({
           },
         },
       ];
+    }
+    filter.is_admin = {
+      _neq: true,
     }
 
     // Lấy tất cả id matching filter

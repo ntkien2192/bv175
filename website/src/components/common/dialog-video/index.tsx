@@ -54,26 +54,28 @@ export default function DialogVideo({
           }}
           className="flex h-full w-full cursor-auto items-center justify-center"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative aspect-video w-[90%] rounded-[2px] border-[2px] border-primary-600 bg-black md:w-[80%] xl:w-[70%]"
-          >
-            <iframe
-              title="Youtube embeded videoT"
-              className="!m-0 h-full w-full object-cover !p-0"
-              style={{ display: 'block', border: 'none' }}
-              src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&modestbranding=1&rel=0`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            />
-
-            <DialogClose
-              onClick={() => smoother?.paused(false)}
-              className="data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary-600 p-[6px] focus:outline-none disabled:pointer-events-none md:p-2"
+          {open && (
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="relative aspect-video w-[90%] rounded-[2px] border-[2px] border-primary-600 bg-black md:w-[80%] xl:w-[70%]"
             >
-              <X className="h-4 w-4 invert" />
-            </DialogClose>
-          </div>
+              <iframe
+                title="Video Bệnh viện Quân y 175"
+                className="!m-0 h-full w-full object-cover !p-0"
+                style={{ display: 'block', border: 'none' }}
+                src={`https://www.youtube-nocookie.com/embed/${videoUrl}?autoplay=1&modestbranding=1&rel=0`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+
+              <DialogClose
+                onClick={() => smoother?.paused(false)}
+                className="data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 rounded-full bg-primary-600 p-[6px] focus:outline-none disabled:pointer-events-none md:p-2"
+              >
+                <X className="h-4 w-4 invert" />
+              </DialogClose>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>

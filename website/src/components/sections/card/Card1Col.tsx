@@ -24,10 +24,11 @@ import Card1ColDetail from './Card1ColDetail';
 import PaginationPrimary from '../pagination/PaginationPrimary';
 import { handleScrollTo } from '@/src/utils/gsap';
 import { useGsapMatchMedia } from '@/src/providers/GsapMatchMediaProvider';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Card1Col({ data }: CommonSection) {
   const t = useTranslations('Common');
+  const locale = useLocale();
   const searchParams = useSearchParams();
   const { conditions } = useGsapMatchMedia();
 
@@ -50,6 +51,7 @@ export default function Card1Col({ data }: CommonSection) {
           collection: data?.collections,
           page: currentPage,
           limit: data?.collection_items_limit,
+          locale,
         });
         setMilestoneData(response);
       } catch (error) {
@@ -65,6 +67,7 @@ export default function Card1Col({ data }: CommonSection) {
       try {
         const response = await getTotalMilestoneCount({
           collection: data?.collections,
+          locale,
         });
         setLength(response);
       } catch (error) {
@@ -74,7 +77,7 @@ export default function Card1Col({ data }: CommonSection) {
   }, []);
 
   return (
-    <div
+    <section
       id="milestone-list"
       className="container space-y-10 py-14 md:space-y-12 lg:space-y-14 lg:py-16 xl:py-[60px] 2xl:space-y-16 2xl:py-[80px] 3xl:space-y-[72px] 3xl:py-[100px] 4xl:space-y-[80px] 4xl:py-[120px]"
     >
@@ -117,7 +120,7 @@ export default function Card1Col({ data }: CommonSection) {
                             asChild={false}
                             className="rounded-lg bg-primary-600 p-[6px_10px] text-sm font-semibold text-white lg:p-[6px_12px] lg:text-base"
                           >
-                            {item?.year}
+                            {item?.translations?.[0]?.year}
                             <TooltipArrow className="fill-primary-600" />
                           </TooltipContent>
                         </div>
@@ -131,7 +134,7 @@ export default function Card1Col({ data }: CommonSection) {
                             asChild={false}
                             className="rounded-lg bg-primary-600 text-sm font-semibold text-white lg:text-base 2xl:p-[6px_14px] 2xl:text-lg 3xl:p-[8px_16px]"
                           >
-                            {item?.year}
+                            {item?.translations?.[0]?.year}
                             <TooltipArrow className="fill-primary-600" />
                           </TooltipContent>
                         </div>
@@ -158,12 +161,12 @@ export default function Card1Col({ data }: CommonSection) {
                             }
                           >
                             <div className="relative line-clamp-3 h-[84px] text-lg font-semibold uppercase text-primary-600 md:h-auto md:!leading-normal lg:text-xl 2xl:text-2xl 3xl:text-[28px]">
-                              {item?.title}
+                              {item?.translations?.[0]?.title}
                             </div>
                             <div
                               className="relative mt-1.5 line-clamp-3 h-[60px] overflow-hidden text-sm font-normal text-black lg:mt-2 xl:h-[72px] xl:text-base 2xl:mt-3 4xl:mt-4 [&_*]:!inline"
                               dangerouslySetInnerHTML={{
-                                __html: item?.blurb,
+                                __html: item?.translations?.[0]?.blurb,
                               }}
                             ></div>
                           </div>
@@ -224,6 +227,6 @@ export default function Card1Col({ data }: CommonSection) {
         totalPage={totalPage}
         idSection="milestone-list"
       />
-    </div>
+    </section>
   );
 }

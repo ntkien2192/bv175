@@ -14,10 +14,6 @@ const shareOnFacebook = () => {
   window.open(facebookShareUrl, "_blank", "width=600,height=400");
 };
 
-
-
-
-
 export {
   copyLink,
   shareOnFacebook

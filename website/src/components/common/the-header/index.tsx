@@ -33,7 +33,7 @@ export default function TheHeader() {
       <div className="bg-white py-[6px] shadow-md xl:py-2 2xl:py-[10px] 4xl:py-3">
         <div className="container relative flex items-center justify-between py-[6px] md:py-[5px] lg:py-0">
           <Link
-            href="/"
+            href={'/' as any}
             aria-label="Chuyển đến trang chủ"
             className="relative h-[40px] w-[230px] md:h-[46px] md:w-[274px] lg:h-[64px] lg:w-[382px] 2xl:h-[72px] 2xl:w-[430px] 4xl:h-[80px] 4xl:w-[478px]"
           >

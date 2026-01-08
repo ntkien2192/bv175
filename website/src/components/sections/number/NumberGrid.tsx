@@ -28,7 +28,7 @@ export default function NumberGrid({ data }: CommonSection) {
                     <span>{item?.content}</span>
                   </div>
 
-                  <div className="text-sm font-normal text-[#ACD1B8] lg:text-base 2xl:text-lg 4xl:text-xl">
+                  <div className="text-sm font-normal text-white lg:text-base 2xl:text-lg 4xl:text-xl">
                     {item?.subtitle}
                   </div>
                   {(index + 2) % 3 === 0 && (

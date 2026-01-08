@@ -1,6 +1,12 @@
 'use client';
 import { CommonSection } from '@/src/types/pageBuilder';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import * as Accordion from '@radix-ui/react-accordion';
 import {
   AccordionContent,
@@ -14,13 +20,16 @@ import { useGsapMatchMedia } from '@/src/providers/GsapMatchMediaProvider';
 import NextImg from '../../common/next-img';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import PaginationPrimary from '../pagination/PaginationPrimary';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function FaqsOneCol({ data }: CommonSection) {
   const t = useTranslations();
+  const locale = useLocale();
   const { conditions } = useGsapMatchMedia();
   const searchParams = useSearchParams();
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const lastSearchRef = useRef<string>('');
 
   const [dataFaqs, setDataFaqs] = useState<any>([]);
   const [length, setLength] = useState<number>(0);
@@ -38,6 +47,9 @@ export default function FaqsOneCol({ data }: CommonSection) {
   }, [length, data?.collection_items_limit]);
 
   useEffect(() => {
+    if (lastSearchRef.current === currentSearch && dataFaqs.length > 0) return;
+    lastSearchRef.current = currentSearch;
+
     (async () => {
       setLoading(true);
       try {
@@ -46,6 +58,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
           page: currentPage,
           limit: data?.collection_items_limit,
           keyword: currentSearch,
+          locale,
         });
         setDataFaqs(response);
       } catch (error) {
@@ -55,7 +68,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
         ScrollTrigger.refresh();
       }
     })();
-  }, [data, currentPage, currentSearch]);
+  }, [data, currentPage, currentSearch, locale]);
 
   useEffect(() => {
     (async () => {
@@ -63,6 +76,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
         const response = await getTotalFaqCount({
           collection: data?.collections,
           keyword: currentSearch,
+          locale,
         });
         setLength(response);
       } catch (error) {
@@ -75,8 +89,13 @@ export default function FaqsOneCol({ data }: CommonSection) {
 
   const handleSearch = useCallback(
     (searchText: string) => {
+      const newText = searchText.trim();
+      const currentSearchValue = searchParams.get('s')?.trim() ?? '';
+
+      if (newText === currentSearchValue) return;
+
       const params = new URLSearchParams(searchParams);
-      params.set('s', searchText.trim());
+      params.set('s', newText);
       params.delete('page');
       router.push(`?${params.toString()}`, { scroll: false });
     },
@@ -106,6 +125,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
             </div>
 
             <input
+              ref={inputRef}
               type="text"
               id="search"
               name="search"
@@ -121,6 +141,17 @@ export default function FaqsOneCol({ data }: CommonSection) {
                 }
               }}
             />
+            <button
+              onClick={() => {
+                setSearchText('');
+                inputRef.current?.focus();
+              }}
+              className={`${searchText === '' ? 'pointer-events-none opacity-0' : ''} flex size-7 items-center justify-center brightness-0`}
+            >
+              <div className="relative size-4">
+                <NextImg src="/assets/icons/close.svg" alt="close icon" />
+              </div>
+            </button>
           </div>
 
           {loading ? (
@@ -151,7 +182,8 @@ export default function FaqsOneCol({ data }: CommonSection) {
                       >
                         <AccordionTrigger className="flex w-full items-center gap-3 p-[4px_0px] lg:p-[6px_0px] 2xl:p-[8px_0px] 3xl:p-[10px_0px]">
                           <div className="flex-1 text-start text-base font-medium text-black transition-all duration-200 group-hover:text-primary-600 group-data-[state=open]:text-primary-600 lg:text-lg">
-                            {startIndex + index + 1}.{item?.question}
+                            {startIndex + index + 1}.
+                            {item?.translations?.[0]?.question}
                           </div>
 
                           <div className="relative size-5 brightness-0 transition-all duration-200 group-hover:brightness-100 group-data-[state=open]:-rotate-180 group-data-[state=open]:brightness-100 lg:size-6">
@@ -167,7 +199,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
                             <div
                               className="content-wrapper"
                               dangerouslySetInnerHTML={{
-                                __html: item?.answer,
+                                __html: item?.translations?.[0]?.answer,
                               }}
                             ></div>
                           </div>
@@ -184,7 +216,7 @@ export default function FaqsOneCol({ data }: CommonSection) {
                 </>
               ) : (
                 <div className="text-normal flex h-[calc(100vh/3)] items-center justify-center text-sm font-medium text-black lg:text-base xl:text-lg">
-                  {t('no-data')}
+                  {t('Common.no-data')}
                 </div>
               )}
             </>

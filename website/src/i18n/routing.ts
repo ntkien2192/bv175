@@ -7,14 +7,17 @@ export const routing = defineRouting({
   localeCookie: true,
   alternateLinks: true,
   localeDetection: true,
-  // pathnames: {
-  //   '/[slug]': {
-  //     en: '/[slug]'
-  //   },
-  //   '/doi-ngu-bac-si/[slug]': {
-  //     en: '/doctors/[slug]'
-  //   },
-  // }
+  pathnames: {
+    '/[slug]': {
+      en: '/[slug]'
+    },
+    '/[slug]/[cate]': {
+      en: '/[slug]/[cate]'
+    },
+    '/bai-viet/[cate]/[slug]': {
+      en: '/posts/[cate]/[slug]'
+    },
+  }
 });
 
 // chỉ dùng cho trang home
@@ -25,14 +28,7 @@ export const getLangSlug = async (
   return locale === routing.defaultLocale ? slug : `${slug}-${locale}`;
 };
 
-export function getLocalizedField<T extends Record<string, any>>(
-  data: T,
-  baseKey: string,
-  lang: string,
-): string {
-  // Nếu ngôn ngữ mặc định là "vi" thì dùng baseKey
-  if (lang === routing.defaultLocale) return data?.[baseKey] ?? '';
-
-  const localizedKey = `${baseKey}_${lang}`;
-  return data?.[localizedKey] ?? data?.[baseKey] ?? '';
+export function getLocalizedField(baseKey: string, lang: string): string {
+  if (lang === routing.defaultLocale) return baseKey;
+  return `${baseKey}_${lang}`;
 }

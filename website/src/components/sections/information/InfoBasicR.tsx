@@ -56,7 +56,7 @@ export default function InfoBasicR({ data }: CommonSection) {
           </div>
 
           <Link
-            href={`${data?.buttons?.[0]?.url}`}
+            href={`${data?.buttons?.[0]?.url}` as any}
             className="mt-6 flex items-center gap-2 font-medium text-gray-950 group-hover:text-primary-50 lg:mt-0 lg:text-lg xl:mt-6"
             aria-label="Xem chi tiết cơ sở vật chất"
           >
